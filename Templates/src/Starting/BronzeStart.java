@@ -25,16 +25,18 @@ public class BronzeStart {
 			String progContent = "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n"
 					+ "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n"
 					+ "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n"
-					+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "	\r\n"
-					+ "	static int n;\r\n" + "\r\n" + "	public static void main(String[] args) throws IOException {\r\n"
+					+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n"
+					+ "	\r\n" + "	static int n;\r\n" + "\r\n"
+					+ "	public static void main(String[] args) throws IOException {\r\n"
 					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"D:\\\\bench\\\\eclipse\\\\Workspace\\\\Bronze\\\\"
-					+ progName + "\\\\1.in\"));\r\n" + "		BufferedReader in = new BufferedReader(new FileReader(\""
-					+ inputOutputFileName + ".in\"));\r\n"
-					+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + inputOutputFileName
-					+ ".out\")));\r\n" + "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
+					+ progName + "\\\\1.in\"));\r\n"
+					+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + inputOutputFileName
+					+ ".in\"));\r\n" + "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\""
+					+ inputOutputFileName + ".out\")));\r\n"
+					+ "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
 					+ "		n = Integer.parseInt(ln.nextToken());\r\n" + "		for (int i = 0; i < n; i++) {\r\n"
-					+ "			\r\n" + "		}\r\n" + "		out.close();\r\n" + "		in.close();\r\n" + "	}\r\n"
-					+ "}";
+					+ "			\r\n" + "		}\r\n" + "		out.close();\r\n" + "		in.close();\r\n"
+					+ "	}\r\n" + "}";
 			out.write(progContent);
 			out.close();
 		} else {
