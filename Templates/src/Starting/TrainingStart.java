@@ -13,11 +13,10 @@ public class TrainingStart {
 		JFrame frame = new JFrame("Input");
 		frame.setAlwaysOnTop(true);
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
-		String inputOutputFileName = JOptionPane.showInputDialog(frame, "File name?");
-		if (progName != null && inputOutputFileName != null) {
+		if (progName != null && progName != null) {
 			File prog = new File("D:\\bench\\eclipse\\Workspace\\Training\\src\\" + progName + ".java");
-			File inputFile = new File("D:\\bench\\eclipse\\Workspace\\Training\\" + inputOutputFileName + ".in");
-			File outputFile = new File("D:\\bench\\eclipse\\Workspace\\Training\\" + inputOutputFileName + ".out");
+			File inputFile = new File("D:\\bench\\eclipse\\Workspace\\Training\\" + progName + ".in");
+			File outputFile = new File("D:\\bench\\eclipse\\Workspace\\Training\\" + progName + ".out");
 			prog.createNewFile();
 			inputFile.createNewFile();
 			outputFile.createNewFile();
@@ -30,8 +29,8 @@ public class TrainingStart {
 					+ "	static int n;\r\n" + "\r\n" + "	public static void main(String[] args) throws IOException {\r\n"
 					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"D:\\\\bench\\\\eclipse\\\\Workspace\\\\Training\\\\"
 					+ progName + "\\\\1.in\"));\r\n" + "		BufferedReader in = new BufferedReader(new FileReader(\""
-					+ inputOutputFileName + ".in\"));\r\n"
-					+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + inputOutputFileName
+					+ progName + ".in\"));\r\n"
+					+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + progName
 					+ ".out\")));\r\n" + "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
 					+ "		n = Integer.parseInt(ln.nextToken());\r\n" + "		for (int i = 0; i < n; i++) {\r\n"
 					+ "			\r\n" + "		}\r\n" + "		out.close();\r\n" + "		in.close();\r\n" + "	}\r\n"
