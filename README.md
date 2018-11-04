@@ -1,2 +1,2 @@
-# USACO
-My USACO files
+# USACO-templates
+My USACO templates files
