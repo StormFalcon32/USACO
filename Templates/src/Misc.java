@@ -28,6 +28,15 @@ public class Misc {
 		}
 		return digits;
 	}
+	
+	static int calcNumDigits(int num) {
+		int ret = 0;
+		while (num > 0) {
+			ret++;
+			num /= 10;
+		}
+		return ret;
+	}
 
 	// Bitwise sieve to check for primes
 
