@@ -13,6 +13,7 @@ public class TrainingStart {
 		JFrame frame = new JFrame("Input");
 		frame.setAlwaysOnTop(true);
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
+<<<<<<< HEAD
 		String loc = JOptionPane.showInputDialog(frame, "School (s), home (h), or other (o)?");
 		String fileDirectory = "";
 		switch (loc) {
@@ -30,6 +31,8 @@ public class TrainingStart {
 			System.exit(0);
 			break;
 		}
+=======
+>>>>>>> branch 'master' of https://github.com/StormFalcon32/USACO-Templates.git
 		if (progName != null && progName != null) {
 			File prog = new File("D:\\bench\\eclipse\\Workspace\\Training\\src\\" + progName + ".java");
 			File inputFile = new File("D:\\bench\\eclipse\\Workspace\\Training\\" + progName + ".in");
