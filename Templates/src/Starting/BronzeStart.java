@@ -14,10 +14,27 @@ public class BronzeStart {
 		frame.setAlwaysOnTop(true);
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String inputOutputFileName = JOptionPane.showInputDialog(frame, "File name?");
+		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
+		String fileDirectory = "";
+		switch (loc) {
+		case "s":
+			fileDirectory = "";
+			break;
+		case "h":
+			fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Bronze\\\\Bronze\\\\";
+			break;
+		case "o":
+			fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
+			break;
+		default:
+			System.out.println("Invalid location");
+			System.exit(0);
+			break;
+		}
 		if (progName != null && inputOutputFileName != null) {
-			File prog = new File("D:\\bench\\eclipse\\Workspace\\Bronze\\src\\" + progName + ".java");
-			File inputFile = new File("D:\\bench\\eclipse\\Workspace\\Bronze\\" + inputOutputFileName + ".in");
-			File outputFile = new File("D:\\bench\\eclipse\\Workspace\\Bronze\\" + inputOutputFileName + ".out");
+			File prog = new File(fileDirectory + "src\\" + progName + ".java");
+			File inputFile = new File(fileDirectory + inputOutputFileName + ".in");
+			File outputFile = new File(fileDirectory + inputOutputFileName + ".out");
 			prog.createNewFile();
 			inputFile.createNewFile();
 			outputFile.createNewFile();
@@ -28,7 +45,7 @@ public class BronzeStart {
 					+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n"
 					+ "	\r\n" + "	static int n;\r\n" + "\r\n"
 					+ "	public static void main(String[] args) throws IOException {\r\n"
-					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"D:\\\\bench\\\\eclipse\\\\Workspace\\\\Bronze\\\\"
+					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"" + fileDirectory + ""
 					+ progName + "\\\\1.in\"));\r\n"
 					+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + inputOutputFileName
 					+ ".in\"));\r\n" + "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\""

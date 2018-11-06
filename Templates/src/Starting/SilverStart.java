@@ -14,10 +14,27 @@ public class SilverStart {
 		frame.setAlwaysOnTop(true);
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String inputOutputFileName = JOptionPane.showInputDialog(frame, "File name?");
+		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
+		String fileDirectory = "";
+		switch (loc) {
+		case "s":
+			fileDirectory = "";
+			break;
+		case "h":
+			fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Silver\\\\Silver\\\\";
+			break;
+		case "o":
+			fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
+			break;
+		default:
+			System.out.println("Invalid location");
+			System.exit(0);
+			break;
+		}
 		if (progName != null && inputOutputFileName != null) {
-			File prog = new File("D:\\bench\\eclipse\\Workspace\\Silver\\src\\" + progName + ".java");
-			File inputFile = new File("D:\\bench\\eclipse\\Workspace\\Silver\\" + inputOutputFileName + ".in");
-			File outputFile = new File("D:\\bench\\eclipse\\Workspace\\Silver\\" + inputOutputFileName + ".out");
+			File prog = new File(fileDirectory + "src\\" + progName + ".java");
+			File inputFile = new File(fileDirectory + inputOutputFileName + ".in");
+			File outputFile = new File(fileDirectory + inputOutputFileName + ".out");
 			prog.createNewFile();
 			inputFile.createNewFile();
 			outputFile.createNewFile();
@@ -25,16 +42,18 @@ public class SilverStart {
 			String progContent = "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n"
 					+ "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n"
 					+ "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n"
-					+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "	\r\n"
-					+ "	static int n;\r\n" + "\r\n" + "	public static void main(String[] args) throws IOException {\r\n"
-					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"D:\\\\bench\\\\eclipse\\\\Workspace\\\\Silver\\\\"
-					+ progName + "\\\\1.in\"));\r\n" + "		BufferedReader in = new BufferedReader(new FileReader(\""
-					+ inputOutputFileName + ".in\"));\r\n"
-					+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + inputOutputFileName
-					+ ".out\")));\r\n" + "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
+					+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n"
+					+ "	\r\n" + "	static int n;\r\n" + "\r\n"
+					+ "	public static void main(String[] args) throws IOException {\r\n"
+					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"" + fileDirectory + ""
+					+ progName + "\\\\1.in\"));\r\n"
+					+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + inputOutputFileName
+					+ ".in\"));\r\n" + "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\""
+					+ inputOutputFileName + ".out\")));\r\n"
+					+ "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
 					+ "		n = Integer.parseInt(ln.nextToken());\r\n" + "		for (int i = 0; i < n; i++) {\r\n"
-					+ "			\r\n" + "		}\r\n" + "		out.close();\r\n" + "		in.close();\r\n" + "	}\r\n"
-					+ "}";
+					+ "			\r\n" + "		}\r\n" + "		out.close();\r\n" + "		in.close();\r\n"
+					+ "	}\r\n" + "}";
 			out.write(progContent);
 			out.close();
 		} else {
