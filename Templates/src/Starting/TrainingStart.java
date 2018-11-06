@@ -13,6 +13,23 @@ public class TrainingStart {
 		JFrame frame = new JFrame("Input");
 		frame.setAlwaysOnTop(true);
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
+		String loc = JOptionPane.showInputDialog(frame, "School (s), home (h), or other (o)?");
+		String fileDirectory = "";
+		switch (loc) {
+		case "s":
+			fileDirectory = "";
+			break;
+		case "h":
+			fileDirectory = "";
+			break;
+		case "o":
+			fileDirectory = "";
+			break;
+		default:
+			System.out.println("Invalid location");
+			System.exit(0);
+			break;
+		}
 		if (progName != null && progName != null) {
 			File prog = new File("D:\\bench\\eclipse\\Workspace\\Training\\src\\" + progName + ".java");
 			File inputFile = new File("D:\\bench\\eclipse\\Workspace\\Training\\" + progName + ".in");
