@@ -31,6 +31,7 @@ public class BronzeStart {
 			System.exit(0);
 			break;
 		}
+		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
 		if (progName != null && inputOutputFileName != null) {
 			File prog = new File(fileDirectory + "src\\" + progName + ".java");
 			File inputFile = new File(fileDirectory + inputOutputFileName + ".in");
@@ -43,17 +44,17 @@ public class BronzeStart {
 					+ "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n"
 					+ "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n"
 					+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n"
-					+ "	\r\n" + "	static int n;\r\n" + "\r\n"
+					+ "	\r\n" + "	static int " + varName + ";\r\n" + "\r\n"
 					+ "	public static void main(String[] args) throws IOException {\r\n"
 					+ "//		BufferedReader in = new BufferedReader(new FileReader(\"" + fileDirectory + ""
 					+ progName + "\\\\1.in\"));\r\n"
 					+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + inputOutputFileName
 					+ ".in\"));\r\n" + "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\""
 					+ inputOutputFileName + ".out\")));\r\n"
-					+ "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
-					+ "		n = Integer.parseInt(ln.nextToken());\r\n" + "		for (int i = 0; i < n; i++) {\r\n"
-					+ "			\r\n" + "		}\r\n" + "		out.close();\r\n" + "		in.close();\r\n"
-					+ "	}\r\n" + "}";
+					+ "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n" + "		" + varName
+					+ " = Integer.parseInt(ln.nextToken());\r\n" + "		for (int i = 0; i < " + varName
+					+ "; i++) {\r\n" + "			\r\n" + "		}\r\n" + "		out.close();\r\n"
+					+ "		in.close();\r\n" + "	}\r\n" + "}";
 			out.write(progContent);
 			out.close();
 		} else {
