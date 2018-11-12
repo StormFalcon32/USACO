@@ -15,24 +15,24 @@ public class BronzeStart {
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String inputOutputFileName = JOptionPane.showInputDialog(frame, "File name?");
 		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
-		String fileDirectory = "";
-		switch (loc) {
-		case "s":
-			fileDirectory = "";
-			break;
-		case "h":
-			fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Bronze\\\\Bronze\\\\";
-			break;
-		case "o":
-			fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
-			break;
-		default:
-			System.out.println("Invalid location");
-			System.exit(0);
-			break;
-		}
 		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
-		if (progName != null && inputOutputFileName != null) {
+		String fileDirectory = "";
+		if (progName != null && inputOutputFileName != null && loc != null) {
+			switch (loc) {
+			case "s":
+				fileDirectory = "";
+				break;
+			case "h":
+				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Bronze\\\\Bronze\\\\";
+				break;
+			case "o":
+				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
+				break;
+			default:
+				System.out.println("Invalid location");
+				System.exit(0);
+				break;
+			}
 			File prog = new File(fileDirectory + "src\\" + progName + ".java");
 			File inputFile = new File(fileDirectory + inputOutputFileName + ".in");
 			File outputFile = new File(fileDirectory + inputOutputFileName + ".out");

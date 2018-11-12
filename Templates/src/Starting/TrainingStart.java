@@ -14,24 +14,24 @@ public class TrainingStart {
 		frame.setAlwaysOnTop(true);
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
-		String fileDirectory = "";
-		switch (loc) {
-		case "s":
-			fileDirectory = "";
-			break;
-		case "h":
-			fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training\\\\";
-			break;
-		case "o":
-			fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
-			break;
-		default:
-			System.out.println("Invalid location");
-			System.exit(0);
-			break;
-		}
 		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
-		if (progName != null && progName != null) {
+		String fileDirectory = "";
+		if (progName != null && progName != null && loc != null) {
+			switch (loc) {
+			case "s":
+				fileDirectory = "";
+				break;
+			case "h":
+				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training\\\\";
+				break;
+			case "o":
+				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
+				break;
+			default:
+				System.out.println("Invalid location");
+				System.exit(0);
+				break;
+			}
 			File prog = new File(fileDirectory + "src\\" + progName + ".java");
 			File inputFile = new File(fileDirectory + progName + ".in");
 			File outputFile = new File(fileDirectory + progName + ".out");
