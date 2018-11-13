@@ -1,7 +1,8 @@
 public class Combinatorics {
-	
+
 	static void CombWithRep(int[] chosen, int[] arr, int currLength, int length, int start, int end) {
-//		Combinations (order doesn't matter 12 is the same as 21) with repeated digits allowed
+		// Combinations (order doesn't matter 12 is the same as 21) with repeated digits
+		// allowed
 		if (currLength == length) {
 			int num = 0;
 			for (int i = 0; i < length; i++) {
@@ -17,9 +18,9 @@ public class Combinatorics {
 		}
 		return;
 	}
-	
+
 	static void MakeAll(int[] chosen, int[] arr, int currLength, int length) {
-//		Repeated digits allowed, order matters, all combinations
+		// Repeated digits allowed, order matters, all combinations
 		if (currLength == length) {
 			int num = 0;
 			for (int i = 0; i < length; i++) {
@@ -35,9 +36,10 @@ public class Combinatorics {
 		}
 		return;
 	}
-	
+
 	static void CombWithoutRep(int[] chosen, int[] arr, int currLength, int length, int start, int end) {
-//		Combinations (order doesn't matter 12 is the same as 21) with no repeated digits allowed
+		// Combinations (order doesn't matter 12 is the same as 21) with no repeated
+		// digits allowed
 		if (currLength == length) {
 			int num = 0;
 			for (int i = 0; i < length; i++) {

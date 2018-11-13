@@ -1,7 +1,7 @@
 import java.util.PriorityQueue;
 
 public class Graphs {
-	
+
 	static void PrimFromEdgeList(int ROW, int COL, PriorityQueue<Edge> edges) {
 		boolean[][] used = new boolean[ROW][COL];
 		used[0][0] = true;
@@ -19,25 +19,26 @@ public class Graphs {
 			}
 			used[newVertex.row][newVertex.col] = true;
 			numEdgesIncluded++;
-//			Pseudo code to add all neighboring edges from new vertex
-//			Code
-//			Code
-//			Code
+			// Pseudo code to add all neighboring edges from new vertex
+			// Code
+			// Code
+			// Code
 		}
 	}
-	
+
 	static class Edge implements Comparable<Edge> {
 		Vertex v1;
 		Vertex v2;
 		long weight;
-		
+
 		public Edge(Vertex a, Vertex b) {
 			v1 = a;
 			v2 = b;
-			
+
 			weight = Math.abs(v1.height - v2.height);
 		}
-		
+
+		@Override
 		public int compareTo(Edge other) {
 			if (this.weight == other.weight) {
 				return 1;
@@ -45,17 +46,16 @@ public class Graphs {
 			return Long.compare(this.weight, other.weight);
 		}
 	}
-	
+
 	static class Vertex {
 		int row;
 		int col;
 		long height;
-		
+
 		public Vertex(int a, int b, long c) {
 			row = a;
 			col = b;
 			height = c;
 		}
 	}
-
 }

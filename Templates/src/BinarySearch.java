@@ -14,9 +14,10 @@ public class BinarySearch {
 		System.out.println(index);
 		System.out.println(l.get(index));
 	}
-//	Returns index of value
-//	Recursive
-//	ArrayList version
+
+	// Returns index of value
+	// Recursive
+	// ArrayList version
 	public static int bsearch(int l, int h, int val, ArrayList<Integer> list) {
 		if (l <= h) {
 			int mid = (h + l) / 2;
@@ -32,9 +33,9 @@ public class BinarySearch {
 		}
 		return -1;
 	}
-	
-//	Array version
-	
+
+	// Array version
+
 	public static int bsearch(int l, int h, int val, int[] list) {
 		if (l <= h) {
 			int mid = (h + l) / 2;
@@ -50,5 +51,4 @@ public class BinarySearch {
 		}
 		return -1;
 	}
-
 }
