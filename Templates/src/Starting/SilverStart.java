@@ -20,7 +20,7 @@ public class SilverStart {
 		if (progName != null && inputOutputFileName != null && loc != null) {
 			switch (loc) {
 			case "s":
-				fileDirectory = "";
+				fileDirectory = "C:\\\\Users\\\\bjchen\\\\git\\\\USACO-Silver\\\\Silver\\\\";
 				break;
 			case "h":
 				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Silver\\\\Silver\\\\";

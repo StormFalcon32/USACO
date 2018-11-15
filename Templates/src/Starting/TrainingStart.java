@@ -19,7 +19,7 @@ public class TrainingStart {
 		if (progName != null && progName != null && loc != null) {
 			switch (loc) {
 			case "s":
-				fileDirectory = "";
+				fileDirectory = "C:\\\\Users\\\\bjchen\\\\git\\\\USACO-Training\\\\Training\\\\";
 				break;
 			case "h":
 				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training\\\\";
