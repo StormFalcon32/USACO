@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 
 public class Misc {
+	
+	static int ROWS;
+	static int COLS;
 
 	// Checking for palindromes and changing bases
 
@@ -49,5 +52,13 @@ public class Misc {
 			}
 		}
 		return true;
+	}
+	
+//	In range of an matrix
+	static boolean inBounds(int r, int c) {
+		if (r < ROWS && r >= 0 && c < COLS && c >= 0) {
+			return true;
+		}
+		return false;
 	}
 }
