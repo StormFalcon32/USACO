@@ -1,6 +1,10 @@
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class Graphs {
+	
+	static int[] dirR = {0, 0, 1, -1};
+	static int[] dirC = {1, -1, 0, 0};
 
 	static void PrimFromEdgeList(int ROW, int COL, PriorityQueue<Edge> edges) {
 		boolean[][] used = new boolean[ROW][COL];
@@ -25,6 +29,23 @@ public class Graphs {
 			// Code
 		}
 	}
+	
+	static void floodFill(LinkedList<Vertex>[][] adjList, Vertex root, boolean[][] visited) {
+		LinkedList<Vertex> q = new LinkedList<Vertex>();
+		q.add(root);
+		while (!q.isEmpty()) {
+			Vertex curr = q.pollFirst();
+			visited[curr.row][curr.col] = true;
+			LinkedList<Vertex> adj = adjList[curr.row][curr.col];
+			for (int i = 0; i < adj.size(); i++) {
+				Vertex target = adj.get(i);
+				if (!visited[target.row][target.col]) {
+					visited[target.row][target.col] = true;
+					q.add(target);
+				}
+			}
+		}
+	}
 
 	static class Edge implements Comparable<Edge> {
 		Vertex v1;
@@ -35,7 +56,7 @@ public class Graphs {
 			v1 = a;
 			v2 = b;
 
-			weight = Math.abs(v1.height - v2.height);
+			weight = Math.abs(v1.weight - v2.weight);
 		}
 
 		@Override
@@ -50,12 +71,12 @@ public class Graphs {
 	static class Vertex {
 		int row;
 		int col;
-		long height;
+		long weight;
 
 		public Vertex(int a, int b, long c) {
 			row = a;
 			col = b;
-			height = c;
+			weight = c;
 		}
 	}
 }
