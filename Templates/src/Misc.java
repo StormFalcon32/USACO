@@ -61,4 +61,14 @@ public class Misc {
 		}
 		return false;
 	}
+	
+	static void binaryToBools(int x, int numDigs) {
+		for (int i = 0; i < numDigs; i++) {
+			if ((x & (1 << i)) == 1 << i) {
+				System.out.println(1);
+			} else {
+				System.out.println(0);
+			}
+		}
+	}
 }
