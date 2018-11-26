@@ -11,6 +11,14 @@ public class Misc {
 		LinkedList<Integer> newDigits = calcDigits(num, base);
 		return newDigits;
 	}
+	
+	static int maxBinaryNum(int numDigs) {
+		int max = 0;
+		for (int i = 0; i < numDigs; i++) {
+			max += 1 << i;
+		}
+		return max;
+	}
 
 	static boolean isPalindrome(LinkedList<Integer> digits) {
 		int numDigits = digits.size();
