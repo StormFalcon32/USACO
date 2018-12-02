@@ -11,14 +11,6 @@ public class Misc {
 		LinkedList<Integer> newDigits = calcDigits(num, base);
 		return newDigits;
 	}
-	
-	static int maxBinaryNum(int numDigs) {
-		int max = 0;
-		for (int i = 0; i < numDigs; i++) {
-			max += 1 << i;
-		}
-		return max;
-	}
 
 	static boolean isPalindrome(LinkedList<Integer> digits) {
 		int numDigits = digits.size();
@@ -70,12 +62,39 @@ public class Misc {
 		return false;
 	}
 	
+//	Binary and bits
+	
 	static void binaryToBools(int x, int numDigs) {
 		for (int i = 0; i < numDigs; i++) {
 			if ((x & (1 << i)) == 1 << i) {
 				System.out.println(1);
 			} else {
 				System.out.println(0);
+			}
+		}
+	}
+	
+	static int maxBinaryNum(int numDigs) {
+		int max = 0;
+		for (int i = 0; i < numDigs; i++) {
+			max += 1 << i;
+		}
+		return max;
+	}
+	
+	static void binaryCombinatorics(int numDigs) {
+		int max = 0;
+		for (int i = 0; i < numDigs; i++) {
+			max += 1 << i;
+		}
+//		0 means all excluded and max means all included
+		for (int x = 0; x <= max; x++) {
+			for (int i = 0; i < numDigs; i++) {
+				if ((x & (1 << i)) == 1 << i) {
+					System.out.println(1);
+				} else {
+					System.out.println(0);
+				}
 			}
 		}
 	}
