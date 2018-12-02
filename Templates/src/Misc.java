@@ -67,11 +67,12 @@ public class Misc {
 	static void binaryToBools(int x, int numDigs) {
 		for (int i = 0; i < numDigs; i++) {
 			if ((x & (1 << i)) == 1 << i) {
-				System.out.println(1);
+				System.out.print(1);
 			} else {
-				System.out.println(0);
+				System.out.print(0);
 			}
 		}
+		System.out.println();
 	}
 	
 	static int maxBinaryNum(int numDigs) {
@@ -91,11 +92,12 @@ public class Misc {
 		for (int x = 0; x <= max; x++) {
 			for (int i = 0; i < numDigs; i++) {
 				if ((x & (1 << i)) == 1 << i) {
-					System.out.println(1);
+					System.out.print(1);
 				} else {
-					System.out.println(0);
+					System.out.print(0);
 				}
 			}
+			System.out.println();
 		}
 	}
 }
