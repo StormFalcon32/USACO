@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Misc {
 	
@@ -7,12 +7,12 @@ public class Misc {
 
 	// Checking for palindromes and changing bases
 
-	static LinkedList<Integer> changeBase(int num, int base) {
-		LinkedList<Integer> newDigits = calcDigits(num, base);
+	static ArrayList<Integer> changeBase(int num, int base) {
+		ArrayList<Integer> newDigits = calcDigits(num, base);
 		return newDigits;
 	}
 
-	static boolean isPalindrome(LinkedList<Integer> digits) {
+	static boolean isPalindrome(ArrayList<Integer> digits) {
 		int numDigits = digits.size();
 		for (int i = 0; i < numDigits / 2; i++) {
 			if (digits.get(i) != digits.get(numDigits - i - 1)) {
@@ -22,8 +22,8 @@ public class Misc {
 		return true;
 	}
 
-	static LinkedList<Integer> calcDigits(int num, int base) {
-		LinkedList<Integer> digits = new LinkedList<Integer>();
+	static ArrayList<Integer> calcDigits(int num, int base) {
+		ArrayList<Integer> digits = new ArrayList<Integer>();
 		while (num > 0) {
 			digits.add(num % base);
 			num /= base;
