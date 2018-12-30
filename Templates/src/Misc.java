@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Misc {
-	
+
 	static int ROWS;
 	static int COLS;
 
@@ -30,7 +30,7 @@ public class Misc {
 		}
 		return digits;
 	}
-	
+
 	static int calcNumDigits(int num) {
 		int ret = 0;
 		while (num > 0) {
@@ -39,8 +39,8 @@ public class Misc {
 		}
 		return ret;
 	}
-	
-//	Simple primality test
+
+	// Simple primality test
 	static boolean isPrime(int num) {
 		if (num % 2 == 0) {
 			return false;
@@ -53,17 +53,17 @@ public class Misc {
 		}
 		return true;
 	}
-	
-//	In range of an matrix
+
+	// In range of an matrix
 	static boolean inBounds(int r, int c) {
 		if (r < ROWS && r >= 0 && c < COLS && c >= 0) {
 			return true;
 		}
 		return false;
 	}
-	
-//	Binary and bits
-	
+
+	// Binary and bits
+
 	static void binaryToBools(int x, int numDigs) {
 		for (int i = 0; i < numDigs; i++) {
 			if ((x & (1 << i)) == 1 << i) {
@@ -74,7 +74,7 @@ public class Misc {
 		}
 		System.out.println();
 	}
-	
+
 	static int maxBinaryNum(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
@@ -82,13 +82,13 @@ public class Misc {
 		}
 		return max;
 	}
-	
+
 	static void binaryCombinatorics(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
 			max += 1 << i;
 		}
-//		0 means all excluded and max means all included
+		// 0 means all excluded and max means all included
 		for (int x = 0; x <= max; x++) {
 			for (int i = 0; i < numDigs; i++) {
 				if ((x & (1 << i)) == 1 << i) {
