@@ -1,4 +1,3 @@
-
 public class StaticClass {
 
 	static class Cow {
@@ -16,6 +15,19 @@ public class StaticClass {
 			this.a = a;
 		}
 
+		@Override
+		public boolean equals(Object o) {
+			Cow2 other = (Cow2) o;
+			return this.a == other.a;
+		}
+		
+		@Override
+		public int hashCode() {
+			int hash = 7;
+			hash = 31 * hash + a;
+			return hash;
+		}
+		
 		@Override
 		public int compareTo(Cow other) {
 			return Integer.compare(this.a, other.a);
