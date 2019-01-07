@@ -1,4 +1,5 @@
 public class MatrixOps {
+	
 	static boolean[][] rotateClockwise90(boolean[][] matrix, int ROWS, int COLS) {
 		// Matrix guaranteed to be square
 		boolean[][] ret = new boolean[ROWS][COLS];
