@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
@@ -5,12 +6,15 @@ public class Graphs {
 	
 	static int[] dirR = {0, 0, 1, -1};
 	static int[] dirC = {1, -1, 0, 0};
+	static int V;
+	static int R;
+	static int C;
 
-	static void PrimFromEdgeList(int ROW, int COL, PriorityQueue<Edge> edges) {
-		boolean[][] used = new boolean[ROW][COL];
+	static void primFromEdgeList(PriorityQueue<Edge> edges) {
+		boolean[][] used = new boolean[R][C];
 		used[0][0] = true;
 		int numEdgesIncluded = 0;
-		while (numEdgesIncluded < ROW * COL - 1) {
+		while (numEdgesIncluded < R * C - 1) {
 			Edge curr = edges.poll();
 			Vertex v1 = curr.v1;
 			Vertex v2 = curr.v2;
@@ -28,6 +32,34 @@ public class Graphs {
 			// Code
 			// Code
 		}
+	}
+	
+	static int[] dijkstraAdjMat(int[][] adj, int root) {
+		int[] dist = new int[V];
+		Arrays.fill(dist, 1 << 20);
+		boolean[] inSet = new boolean[V];
+		dist[root] = 0;
+		
+		for (int k = 0; k < V - 1; k++) {
+			
+			int u = -1;
+			int min = Integer.MAX_VALUE;
+			for (int i = 0; i < V; i++) {
+				if (!inSet[i] && dist[i] < min) {
+					u = i;
+					min = dist[i];
+				}
+			}
+			inSet[u] = true;
+			
+			for (int v = 0; v < V; v++) {
+				int distThroughU = dist[u] + adj[u][v];
+				if (!inSet[v] && adj[u][v] != 0 && distThroughU < dist[v]) {
+					dist[v] = distThroughU;
+				}
+			}
+		}
+		return dist;
 	}
 	
 	static void floodFill(LinkedList<Vertex>[][] adjList, Vertex root, boolean[][] visited) {
