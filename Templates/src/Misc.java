@@ -1,4 +1,6 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Misc {
 
@@ -98,6 +100,15 @@ public class Misc {
 				}
 			}
 			System.out.println();
+		}
+	}
+	
+	static void seedGen(int N) {
+		long[] seeds = new long[N];
+
+		for (int i = 0; i < N; i++) {
+			// Fill seeds with random ints
+			seeds[i] = BigInteger.probablePrime(31, new Random()).longValue();
 		}
 	}
 }
