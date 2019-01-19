@@ -10,6 +10,14 @@ public class Graphs {
 	static int R;
 	static int C;
 
+	// In range of an matrix
+	static boolean inBounds(int r, int c) {
+		if (r < R && r >= 0 && c < C && c >= 0) {
+			return true;
+		}
+		return false;
+	}
+	
 	static void primFromEdgeList(PriorityQueue<Edge> edges) {
 		boolean[][] used = new boolean[R][C];
 		used[0][0] = true;
