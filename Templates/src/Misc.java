@@ -3,9 +3,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Misc {
-
-	static int ROWS;
-	static int COLS;
+	
+	static char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
 	// Checking for palindromes and changing bases
 
