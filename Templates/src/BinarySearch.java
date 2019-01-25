@@ -10,7 +10,7 @@ public class BinarySearch {
 			l.add(random);
 		}
 		Collections.sort(l);
-		int index = bsearch(0, 999, 56, l);
+		int index = bSearch(0, 999, 56, l);
 		System.out.println(index);
 		System.out.println(l.get(index));
 	}
@@ -18,7 +18,7 @@ public class BinarySearch {
 	// Returns index of value
 	// Recursive
 	// ArrayList version
-	public static int bsearch(int l, int h, int val, ArrayList<Integer> list) {
+	public static int bSearch(int l, int h, int val, ArrayList<Integer> list) {
 		if (l <= h) {
 			int mid = (h + l) / 2;
 			int midVal = list.get(mid);
@@ -26,9 +26,9 @@ public class BinarySearch {
 				return mid;
 			}
 			if (val < midVal) {
-				return bsearch(l, mid - 1, val, list);
+				return bSearch(l, mid - 1, val, list);
 			} else {
-				return bsearch(mid + 1, h, val, list);
+				return bSearch(mid + 1, h, val, list);
 			}
 		}
 		return -1;
@@ -36,7 +36,7 @@ public class BinarySearch {
 
 	// Array version
 
-	public static int bsearch(int l, int h, int val, int[] list) {
+	public static int bSearch(int l, int h, int val, int[] list) {
 		if (l <= h) {
 			int mid = (h + l) / 2;
 			int midVal = list[mid];
@@ -44,9 +44,9 @@ public class BinarySearch {
 				return mid;
 			}
 			if (val < midVal) {
-				return bsearch(l, mid - 1, val, list);
+				return bSearch(l, mid - 1, val, list);
 			} else {
-				return bsearch(mid + 1, h, val, list);
+				return bSearch(mid + 1, h, val, list);
 			}
 		}
 		return -1;
