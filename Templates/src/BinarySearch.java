@@ -3,7 +3,7 @@ import java.util.Collections;
 
 public class BinarySearch {
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		ArrayList<Integer> l = new ArrayList<Integer>();
 		for (int i = 0; i < 1000; i++) {
 			int random = (int) (Math.random() * 100);
@@ -18,7 +18,7 @@ public class BinarySearch {
 	// Returns index of value
 	// Recursive
 	// ArrayList version
-	public static int bSearch(int l, int h, int val, ArrayList<Integer> list) {
+	static int bSearch(int l, int h, int val, ArrayList<Integer> list) {
 		if (l <= h) {
 			int mid = (h + l) / 2;
 			int midVal = list.get(mid);
@@ -36,7 +36,7 @@ public class BinarySearch {
 
 	// Array version
 
-	public static int bSearch(int l, int h, int val, int[] list) {
+	static int bSearch(int l, int h, int val, int[] list) {
 		if (l <= h) {
 			int mid = (h + l) / 2;
 			int midVal = list[mid];
