@@ -8,7 +8,7 @@ public class StaticClass {
 		}
 	}
 
-	static class Cow2 implements Comparable<Cow> {
+	static class Cow2 implements Comparable<Cow2> {
 		int a;
 
 		public Cow2(int a) {
@@ -29,7 +29,7 @@ public class StaticClass {
 		}
 		
 		@Override
-		public int compareTo(Cow other) {
+		public int compareTo(Cow2 other) {
 			return Integer.compare(this.a, other.a);
 		}
 	}
