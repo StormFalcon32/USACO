@@ -47,8 +47,8 @@ public class TrainingStart {
 					+ "	public static void main(String[] args) throws IOException {\r\n"
 					+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + progName + ".in\"));\r\n"
 					+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + progName
-					+ ".out\")));\r\n" + "		StringTokenizer ln = new StringTokenizer(in.readLine());\r\n"
-					+ "		" + varName + " = Integer.parseInt(ln.nextToken());\r\n" + "		for (int i = 0; i < "
+					+ ".out\")));\r\n" + "		StringTokenizer tk = new StringTokenizer(in.readLine());\r\n"
+					+ "		" + varName + " = Integer.parseInt(tk.nextToken());\r\n" + "		for (int i = 0; i < "
 					+ varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" + "		out.close();\r\n"
 					+ "		in.close();\r\n" + "	}\r\n" + "}";
 			out.write(progContent);
