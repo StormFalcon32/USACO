@@ -19,10 +19,10 @@ public class TrainingStart {
 		if (progName != null && progName != null && loc != null) {
 			switch (loc) {
 			case "s":
-				fileDirectory = "C:\\\\Users\\\\bjchen\\\\git\\\\USACO-Training\\\\Training\\\\";
+				fileDirectory = "H:\\\\git\\\\USACO-Training\\\\Training\\\\";
 				break;
 			case "h":
-				fileDirectory = "H:\\\\git\\\\USACO-Training\\\\Training\\\\";
+				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training";
 				break;
 			case "o":
 				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");

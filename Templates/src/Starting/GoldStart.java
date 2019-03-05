@@ -19,10 +19,10 @@ public class GoldStart {
 		if (progName != null && inputOutputFileName != null && loc != null) {
 			switch (loc) {
 			case "s":
-				fileDirectory = "C:\\\\Users\\\\bjchen\\\\git\\\\USACO-Gold\\\\Gold\\\\";
+				fileDirectory = "H:\\\\git\\\\USACO-Gold\\\\Gold\\\\";
 				break;
 			case "h":
-				fileDirectory = "H:\\\\git\\\\USACO-Gold\\\\Gold\\\\";
+				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Gold\\\\Gold";;
 				break;
 			case "o":
 				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
