@@ -22,7 +22,7 @@ public class GoldStart {
 				fileDirectory = "H:\\\\git\\\\USACO-Gold\\\\Gold\\\\";
 				break;
 			case "h":
-				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Gold\\\\Gold";;
+				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Gold\\\\Gold\\\\";;
 				break;
 			case "o":
 				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");

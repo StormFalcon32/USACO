@@ -22,7 +22,7 @@ public class TrainingStart {
 				fileDirectory = "H:\\\\git\\\\USACO-Training\\\\Training\\\\";
 				break;
 			case "h":
-				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training";
+				fileDirectory = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training\\\\";
 				break;
 			case "o":
 				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
