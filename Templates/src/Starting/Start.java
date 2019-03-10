@@ -50,30 +50,26 @@ public class Start {
 			FileWriter out = new FileWriter(prog);
 			String progContent;
 			if (gold) {
-				progContent = "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n" + "import java.io.FileReader;\r\n"
-						+ "import java.io.FileWriter;\r\n" + "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n"
-						+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "\r\n"
-						+ "	public static void main(String[] args) throws IOException {\r\n"
-						+ "		// BufferedReader in = new BufferedReader(new FileReader(\"" + homeGold + "" + progName + "\\\\1.in\"));\r\n"
-						+ "		// BufferedReader in = new BufferedReader(new FileReader(\"" + schoolGold + "" + progName + "\\\\1.in\"));\\r\\n"
+				progContent = "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n" + "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n"
+						+ "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n" + "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "\r\n"
+						+ "	public static void main(String[] args) throws IOException {\r\n" + "		// BufferedReader in = new BufferedReader(new FileReader(\"" + homeGold + "" + progName
+						+ "\\\\1.in\"));\r\n" + "		// BufferedReader in = new BufferedReader(new FileReader(\"" + schoolGold + "" + progName + "\\\\1.in\"));\r\n"
 						+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + inputOutputFileName + ".in\"));\r\n"
 						+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + inputOutputFileName + ".out\")));\r\n"
 						+ "		StringTokenizer tk = new StringTokenizer(in.readLine());\r\n" + "		" + varType + " " + varName + " = "
 						+ (isInt ? "Integer.parseInt(tk.nextToken())" : (isString ? "in.readLine()" : "")) + ";\r\n"
-						+ (isInt ? "		for (int i = 0; i < " + varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" : "")
-						+ "		out.close();\r\n" + "		in.close();\r\n" + "	}\r\n" + "}";
+						+ (isInt ? "		for (int i = 0; i < " + varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" : "") + "		out.close();\r\n" + "		in.close();\r\n"
+						+ "	}\r\n" + "}";
 			} else {
-				progContent = "/*\r\n" + "ID: benchen1\r\n" + "LANG: JAVA\r\n" + "TASK: " + progName + "\r\n" + "*/\r\n" + "\r\n"
-						+ "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n" + "import java.io.FileReader;\r\n"
-						+ "import java.io.FileWriter;\r\n" + "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n"
-						+ "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "\r\n"
-						+ "	public static void main(String[] args) throws IOException {\r\n"
-						+ "		BufferedReader in = new BufferedReader(new FileReader(\"" + progName + ".in\"));\r\n"
+				progContent = "/*\r\n" + "ID: benchen1\r\n" + "LANG: JAVA\r\n" + "TASK: " + progName + "\r\n" + "*/\r\n" + "\r\n" + "import java.io.BufferedReader;\r\n"
+						+ "import java.io.BufferedWriter;\r\n" + "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n" + "import java.io.IOException;\r\n"
+						+ "import java.io.PrintWriter;\r\n" + "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "\r\n"
+						+ "	public static void main(String[] args) throws IOException {\r\n" + "		BufferedReader in = new BufferedReader(new FileReader(\"" + progName + ".in\"));\r\n"
 						+ "		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(\"" + progName + ".out\")));\r\n"
 						+ "		StringTokenizer tk = new StringTokenizer(in.readLine());\r\n" + "		" + varType + " " + varName + " = "
 						+ (isInt ? "Integer.parseInt(tk.nextToken())" : (isString ? "in.readLine()" : "")) + ";\r\n"
-						+ (isInt ? "		for (int i = 0; i < " + varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" : "")
-						+ "		out.close();\r\n" + "		in.close();\r\n" + "	}\r\n" + "}";
+						+ (isInt ? "		for (int i = 0; i < " + varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" : "") + "		out.close();\r\n" + "		in.close();\r\n"
+						+ "	}\r\n" + "}";
 			}
 			out.write(progContent);
 			out.close();
