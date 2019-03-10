@@ -1,12 +1,17 @@
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Graphs {
 	
 	static int[] dirR = { 0, 0, 1, -1 };
 	static int[] dirC = { 1, -1, 0, 0 };
-	static int V;
+	static int N;
 	static int R;
 	static int C;
+	static final int INF = 1 << 30;
 	
 	// In range of an matrix
 	static boolean inBounds(int r, int c) {
@@ -16,64 +21,128 @@ public class Graphs {
 		return false;
 	}
 	
-	static void primAdjMat(int adj[][]) {
+	static int[] primAdjMat(int adjMat[][]) {
 		// Array to store constructed MST
-		int parent[] = new int[V];
+		int parent[] = new int[N];
 		
-		int key[] = new int[V];
+		int key[] = new int[N];
 		Arrays.fill(key, Integer.MAX_VALUE);
 		
-		boolean mstSet[] = new boolean[V];
+		boolean inSet[] = new boolean[N];
 		
 		key[0] = 0;
 		parent[0] = -1;
 		
-		for (int count = 0; count < V - 1; count++) {
+		for (int count = 0; count < N - 1; count++) {
 			int min = Integer.MAX_VALUE;
 			int minIndex = -1;
 			
-			for (int v = 0; v < V; v++) {
-				if (mstSet[v] == false && key[v] < min) {
+			for (int v = 0; v < N; v++) {
+				if (!inSet[v] && key[v] < min) {
 					min = key[v];
 					minIndex = v;
 				}
 			}
 			int u = minIndex;
-			mstSet[u] = true;
-			for (int v = 0; v < V; v++) {
-				if (adj[u][v] != 0 && mstSet[v] == false && adj[u][v] < key[v]) {
+			inSet[u] = true;
+			for (int v = 0; v < N; v++) {
+				if (adjMat[u][v] != 0 && !inSet[v] && adjMat[u][v] < key[v]) {
 					parent[v] = u;
-					key[v] = adj[u][v];
+					key[v] = adjMat[u][v];
 				}
 			}
 		}
+		return parent;
 	}
 	
-	static int[] dijkstraAdjMat(int[][] adj, int root) {
-		int[] dist = new int[V];
-		Arrays.fill(dist, 1 << 20);
-		boolean[] inSet = new boolean[V];
+	static int[] dijkstraAdjMat(int[][] adjMat, int root) {
+		int[] dist = new int[N];
+		Arrays.fill(dist, INF);
+		boolean[] inSet = new boolean[N];
 		dist[root] = 0;
 		
-		for (int k = 0; k < V - 1; k++) {
+		for (int k = 0; k < N - 1; k++) {
 			
-			int u = -1;
+			int smallest = -1;
 			int min = Integer.MAX_VALUE;
-			for (int i = 0; i < V; i++) {
+			for (int i = 0; i < N; i++) {
 				if (!inSet[i] && dist[i] < min) {
-					u = i;
+					smallest = i;
 					min = dist[i];
 				}
 			}
-			inSet[u] = true;
+			inSet[smallest] = true;
 			
-			for (int v = 0; v < V; v++) {
-				int distThroughU = dist[u] + adj[u][v];
-				if (!inSet[v] && adj[u][v] != 0 && distThroughU < dist[v]) {
-					dist[v] = distThroughU;
+			for (int v = 0; v < N; v++) {
+				int distThroughU = dist[smallest] + adjMat[smallest][v];
+				if (!inSet[v] && adjMat[smallest][v] != 0) {
+					dist[v] = Math.min(dist[v], distThroughU);
 				}
 			}
 		}
 		return dist;
+	}
+	
+	static int[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
+		Queue<Node> heap = new PriorityQueue<Node>();
+		int[] dist = new int[N];
+		Arrays.fill(dist, INF);
+		boolean[] inSet = new boolean[N];
+		for (int i = 0; i < N; i++) {
+			if (i == root) {
+				continue;
+			}
+			heap.add(new Node(i, INF));
+		}
+		heap.add(new Node(root, 0));
+		dist[root] = 0;
+		
+		for (int k = 0; k < N - 1; k++) {
+			Node smallest = heap.poll();
+			inSet[smallest.num] = true;
+			LinkedList<Edge> adj = adjList[smallest.num];
+			ListIterator<Edge> iterate = adj.listIterator();
+			while (iterate.hasNext()) {
+				Edge currEdge = iterate.next();
+				Node toUpdate = currEdge.n1 == smallest ? currEdge.n2 : currEdge.n1;
+				int distThroughU = smallest.dist + currEdge.weight;
+				if (!inSet[toUpdate.num]) {
+					toUpdate.dist = Math.min(toUpdate.dist, distThroughU);
+					dist[toUpdate.num] = toUpdate.dist;
+				}
+			}
+		}
+		return dist;
+	}
+	
+	static class Node implements Comparable<Node> {
+		int num;
+		int dist;
+		
+		public Node(int v, int d) {
+			num = v;
+			dist = d;
+		}
+		
+		@Override
+		public int compareTo(Node other) {
+			// TODO Auto-generated method stub
+			if (this.dist == other.dist) {
+				return Integer.compare(this.num, other.num);
+			}
+			return Integer.compare(this.dist, other.dist);
+		}
+	}
+	
+	static class Edge {
+		Node n1;
+		Node n2;
+		int weight;
+		
+		public Edge(Node a, Node b, int w) {
+			n1 = a;
+			n2 = b;
+			weight = w;
+		}
 	}
 }
