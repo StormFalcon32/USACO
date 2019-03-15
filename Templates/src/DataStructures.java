@@ -5,7 +5,7 @@ public class DataStructures {
 		int[] arr;
 		int[] size;
 		int N;
-	
+		
 		public DisjointSet(int a) {
 			N = a;
 			arr = new int[N];
@@ -15,7 +15,7 @@ public class DataStructures {
 				arr[i] = i;
 			}
 		}
-	
+		
 		public int root(int curr) {
 			while (arr[curr] != curr) {
 				arr[curr] = arr[arr[curr]];
@@ -23,14 +23,14 @@ public class DataStructures {
 			}
 			return curr;
 		}
-	
+		
 		public boolean find(int a, int b) {
 			if (root(a) == root(b)) {
 				return true;
 			}
 			return false;
 		}
-	
+		
 		public void union(int a, int b) {
 			int aRoot = root(a);
 			int bRoot = root(b);
@@ -43,5 +43,36 @@ public class DataStructures {
 				size[aRoot] += size[bRoot];
 			}
 		}
+	}
+	
+	static class BITree {
+		
+		int BITree[];
+		int N;
+		
+		public BITree(int n) {
+			N = n;
+			BITree = new int[N + 1];
+		}
+		
+		public int get(int index) {
+			int sum = 0;
+			index = index + 1;
+			while (index > 0) {
+				sum += BITree[index];
+				index -= index & (-index);
+			}
+			return sum;
+		}
+		
+		public void update(int index, int val) {
+			index = index + 1;
+			
+			while (index <= N) {
+				BITree[index] += val;
+				index += index & (-index);
+			}
+		}
+		
 	}
 }
