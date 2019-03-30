@@ -6,22 +6,22 @@ import java.util.Queue;
 
 public class Graphs {
 	
-	static int[] dirR = { 0, 0, 1, -1 };
-	static int[] dirC = { 1, -1, 0, 0 };
-	static int N;
-	static int R;
-	static int C;
+	static final int[] dirR = { 0, 0, 1, -1 };
+	static final int[] dirC = { 1, -1, 0, 0 };
+	public int N;
+	public int R;
+	public int C;
 	static final int INF = 1 << 30;
 	
 	// In range of an matrix
-	static boolean inBounds(int r, int c) {
+	public boolean inBounds(int r, int c) {
 		if (r < R && r >= 0 && c < C && c >= 0) {
 			return true;
 		}
 		return false;
 	}
 	
-	static int[] primAdjMat(int adjMat[][]) {
+	public int[] primAdjMat(int adjMat[][]) {
 		// Array to store constructed MST
 		int parent[] = new int[N];
 		
@@ -55,7 +55,7 @@ public class Graphs {
 		return parent;
 	}
 	
-	static int[] dijkstraAdjMat(int[][] adjMat, int root) {
+	public int[] dijkstraAdjMat(int[][] adjMat, int root) {
 		int[] dist = new int[N];
 		Arrays.fill(dist, INF);
 		boolean[] inSet = new boolean[N];
@@ -83,7 +83,7 @@ public class Graphs {
 		return dist;
 	}
 	
-	static int[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
+	public int[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
 		Queue<Node> heap = new PriorityQueue<Node>();
 		int[] dist = new int[N];
 		Arrays.fill(dist, INF);
@@ -114,35 +114,35 @@ public class Graphs {
 		}
 		return dist;
 	}
+}
+
+class Node implements Comparable<Node> {
+	int num;
+	int dist;
 	
-	static class Node implements Comparable<Node> {
-		int num;
-		int dist;
-		
-		public Node(int v, int d) {
-			num = v;
-			dist = d;
-		}
-		
-		@Override
-		public int compareTo(Node other) {
-			// TODO Auto-generated method stub
-			if (this.dist == other.dist) {
-				return Integer.compare(this.num, other.num);
-			}
-			return Integer.compare(this.dist, other.dist);
-		}
+	public Node(int v, int d) {
+		num = v;
+		dist = d;
 	}
 	
-	static class Edge {
-		Node n1;
-		Node n2;
-		int weight;
-		
-		public Edge(Node a, Node b, int w) {
-			n1 = a;
-			n2 = b;
-			weight = w;
+	@Override
+	public int compareTo(Node other) {
+		// TODO Auto-generated method stub
+		if (this.dist == other.dist) {
+			return Integer.compare(this.num, other.num);
 		}
+		return Integer.compare(this.dist, other.dist);
+	}
+}
+
+class Edge {
+	Node n1;
+	Node n2;
+	int weight;
+	
+	public Edge(Node a, Node b, int w) {
+		n1 = a;
+		n2 = b;
+		weight = w;
 	}
 }
