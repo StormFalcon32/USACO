@@ -120,9 +120,9 @@ class Node implements Comparable<Node> {
 	int num;
 	int dist;
 	
-	public Node(int v, int d) {
-		num = v;
-		dist = d;
+	public Node(int num, int dist) {
+		this.num = num;
+		this.dist = dist;
 	}
 	
 	@Override

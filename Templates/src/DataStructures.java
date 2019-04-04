@@ -8,8 +8,8 @@ class BITree {
 	int BITree[];
 	int N;
 	
-	public BITree(int n) {
-		N = n;
+	public BITree(int N) {
+		this.N = N;
 		BITree = new int[N + 1];
 	}
 	
@@ -39,8 +39,8 @@ class DisjointSet {
 	int[] size;
 	int N;
 	
-	public DisjointSet(int a) {
-		N = a;
+	public DisjointSet(int N) {
+		this.N = N;
 		arr = new int[N];
 		size = new int[N];
 		Arrays.fill(size, 1);

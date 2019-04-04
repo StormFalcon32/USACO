@@ -5,15 +5,15 @@ import java.util.Random;
 public class Misc {
 	
 	static char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-
+	
 	// Checking for palindromes and changing bases
-
-	static ArrayList<Integer> changeBase(int num, int base) {
+	
+	public ArrayList<Integer> changeBase(int num, int base) {
 		ArrayList<Integer> newDigits = calcDigits(num, base);
 		return newDigits;
 	}
-
-	static boolean isPalindrome(ArrayList<Integer> digits) {
+	
+	public boolean isPalindrome(ArrayList<Integer> digits) {
 		int numDigits = digits.size();
 		for (int i = 0; i < numDigits / 2; i++) {
 			if (digits.get(i) != digits.get(numDigits - i - 1)) {
@@ -22,8 +22,8 @@ public class Misc {
 		}
 		return true;
 	}
-
-	static ArrayList<Integer> calcDigits(int num, int base) {
+	
+	public ArrayList<Integer> calcDigits(int num, int base) {
 		ArrayList<Integer> digits = new ArrayList<Integer>();
 		while (num > 0) {
 			digits.add(num % base);
@@ -31,8 +31,8 @@ public class Misc {
 		}
 		return digits;
 	}
-
-	static int calcNumDigits(int num) {
+	
+	public int calcNumDigits(int num) {
 		int ret = 0;
 		while (num > 0) {
 			ret++;
@@ -40,9 +40,9 @@ public class Misc {
 		}
 		return ret;
 	}
-
+	
 	// Simple primality test
-	static boolean isPrime(int num) {
+	public boolean isPrime(int num) {
 		if (num % 2 == 0) {
 			return false;
 		}
@@ -54,10 +54,10 @@ public class Misc {
 		}
 		return true;
 	}
-
+	
 	// Binary and bits
-
-	static void binaryToBools(int x, int numDigs) {
+	
+	public void binaryToBools(int x, int numDigs) {
 		for (int i = 0; i < numDigs; i++) {
 			if ((x & (1 << i)) == 1 << i) {
 				System.out.print(1);
@@ -67,16 +67,16 @@ public class Misc {
 		}
 		System.out.println();
 	}
-
-	static int maxBinaryNum(int numDigs) {
+	
+	public int maxBinaryNum(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
 			max += 1 << i;
 		}
 		return max;
 	}
-
-	static void binaryCombinatorics(int numDigs) {
+	
+	public void binaryCombinatorics(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
 			max += 1 << i;
@@ -94,9 +94,9 @@ public class Misc {
 		}
 	}
 	
-	static void seedGen(int N) {
+	public void seedGen(int N) {
 		long[] seeds = new long[N];
-
+		
 		for (int i = 0; i < N; i++) {
 			// Fill seeds with random ints
 			seeds[i] = BigInteger.probablePrime(31, new Random()).longValue();
