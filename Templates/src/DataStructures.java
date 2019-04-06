@@ -3,20 +3,20 @@ import java.util.Arrays;
 public class DataStructures {
 }
 
-class BITree {
-	int BITree[];
+class BIT {
+	int BIT[];
 	int N;
 	
-	public BITree(int N) {
+	public BIT(int N) {
 		this.N = N;
-		BITree = new int[N + 1];
+		BIT = new int[N + 1];
 	}
 	
 	public int get(int index) {
 		int sum = 0;
 		index++;
 		while (index > 0) {
-			sum += BITree[index];
+			sum += BIT[index];
 			index -= index & (-index);
 		}
 		return sum;
@@ -26,7 +26,7 @@ class BITree {
 		index++;
 		
 		while (index <= N) {
-			BITree[index] += val;
+			BIT[index] += val;
 			index += index & (-index);
 		}
 	}
