@@ -16,8 +16,8 @@ public class Start {
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String inputOutputFileName = gold ? JOptionPane.showInputDialog(frame, "File name?") : null;
 		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
-		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
 		String varType = JOptionPane.showInputDialog(frame, "Variable type?");
+		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
 		boolean isInt = varType.equals("int");
 		boolean isString = varType.equals("String");
 		String fileDirectory = "";
