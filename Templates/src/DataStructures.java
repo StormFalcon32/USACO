@@ -4,7 +4,6 @@ public class DataStructures {
 }
 
 class BITree {
-	
 	int BITree[];
 	int N;
 	
@@ -31,7 +30,6 @@ class BITree {
 			index += index & (-index);
 		}
 	}
-	
 }
 
 class DisjointSet {
