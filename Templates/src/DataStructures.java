@@ -14,7 +14,7 @@ class BITree {
 	
 	public int get(int index) {
 		int sum = 0;
-		index = index + 1;
+		index++;
 		while (index > 0) {
 			sum += BITree[index];
 			index -= index & (-index);
@@ -23,7 +23,7 @@ class BITree {
 	}
 	
 	public void update(int index, int val) {
-		index = index + 1;
+		index++;
 		
 		while (index <= N) {
 			BITree[index] += val;
