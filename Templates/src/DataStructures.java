@@ -24,7 +24,6 @@ class BIT {
 	
 	public void update(int index, int val) {
 		index++;
-		
 		while (index <= N) {
 			BIT[index] += val;
 			index += index & (-index);
