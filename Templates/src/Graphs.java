@@ -88,27 +88,24 @@ public class Graphs {
 		int[] dist = new int[N];
 		Arrays.fill(dist, INF);
 		boolean[] inSet = new boolean[N];
-		for (int i = 0; i < N; i++) {
-			if (i == root) {
-				continue;
-			}
-			heap.add(new Node(i, INF));
-		}
 		heap.add(new Node(root, 0));
 		dist[root] = 0;
 		
 		for (int k = 0; k < N - 1; k++) {
-			Node smallest = heap.poll();
-			inSet[smallest.num] = true;
-			LinkedList<Edge> adj = adjList[smallest.num];
+			int u = heap.poll().num;
+			inSet[u] = true;
+			LinkedList<Edge> adj = adjList[u];
 			ListIterator<Edge> iterate = adj.listIterator();
 			while (iterate.hasNext()) {
 				Edge currEdge = iterate.next();
-				Node toUpdate = currEdge.n1 == smallest ? currEdge.n2 : currEdge.n1;
-				int distThroughU = smallest.dist + currEdge.weight;
-				if (!inSet[toUpdate.num]) {
-					toUpdate.dist = Math.min(toUpdate.dist, distThroughU);
-					dist[toUpdate.num] = toUpdate.dist;
+				int v = currEdge.other;
+				int distThroughU = dist[u] + currEdge.weight;
+				if (!inSet[v]) {
+					if (distThroughU < dist[v]) {
+						dist[v] = distThroughU;
+						Node toAdd = new Node(v, distThroughU);
+						heap.add(toAdd);
+					}
 				}
 			}
 		}
@@ -136,13 +133,11 @@ class Node implements Comparable<Node> {
 }
 
 class Edge {
-	Node n1;
-	Node n2;
+	int other;
 	int weight;
 	
-	public Edge(Node a, Node b, int w) {
-		n1 = a;
-		n2 = b;
+	public Edge(int o, int w) {
+		other = o;
 		weight = w;
 	}
 }
