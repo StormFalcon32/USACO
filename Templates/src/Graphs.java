@@ -91,7 +91,7 @@ public class Graphs {
 		heap.add(new Node(root, 0));
 		dist[root] = 0;
 		
-		for (int k = 0; k < N - 1; k++) {
+		while (!heap.isEmpty()) {
 			int u = heap.poll().num;
 			inSet[u] = true;
 			LinkedList<Edge> adj = adjList[u];
