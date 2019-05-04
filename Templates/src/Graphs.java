@@ -11,7 +11,7 @@ public class Graphs {
 	public int N;
 	public int R;
 	public int C;
-	static final int INF = Integer.MAX_VALUE;
+	static final long INF = Long.MAX_VALUE;
 	
 	// In range of an matrix
 	public boolean inBounds(int r, int c) {
@@ -55,8 +55,8 @@ public class Graphs {
 		return parent;
 	}
 	
-	public int[] dijkstraAdjMat(int[][] adjMat, int root) {
-		int[] dist = new int[N];
+	public long[] dijkstraAdjMat(int[][] adjMat, int root) {
+		long[] dist = new long[N];
 		Arrays.fill(dist, INF);
 		boolean[] inSet = new boolean[N];
 		dist[root] = 0;
@@ -64,7 +64,7 @@ public class Graphs {
 		for (int k = 0; k < N - 1; k++) {
 			
 			int smallest = -1;
-			int min = Integer.MAX_VALUE;
+			long min = Long.MAX_VALUE;
 			for (int i = 0; i < N; i++) {
 				if (!inSet[i] && dist[i] < min) {
 					smallest = i;
@@ -74,7 +74,7 @@ public class Graphs {
 			inSet[smallest] = true;
 			
 			for (int v = 0; v < N; v++) {
-				int distThroughU = dist[smallest] + adjMat[smallest][v];
+				long distThroughU = dist[smallest] + adjMat[smallest][v];
 				if (!inSet[v] && adjMat[smallest][v] != 0) {
 					dist[v] = Math.min(dist[v], distThroughU);
 				}
@@ -83,9 +83,9 @@ public class Graphs {
 		return dist;
 	}
 	
-	public int[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
+	public long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
 		Queue<Node> heap = new PriorityQueue<Node>();
-		int[] dist = new int[N];
+		long[] dist = new long[N];
 		Arrays.fill(dist, INF);
 		boolean[] inSet = new boolean[N];
 		heap.add(new Node(root, 0));
@@ -99,7 +99,7 @@ public class Graphs {
 			while (iterate.hasNext()) {
 				Edge currEdge = iterate.next();
 				int v = currEdge.other;
-				int distThroughU = dist[u] + currEdge.weight;
+				long distThroughU = dist[u] + currEdge.weight;
 				if (!inSet[v]) {
 					if (distThroughU < dist[v]) {
 						dist[v] = distThroughU;
@@ -115,9 +115,9 @@ public class Graphs {
 
 class Node implements Comparable<Node> {
 	int num;
-	int dist;
+	long dist;
 	
-	public Node(int num, int dist) {
+	public Node(int num, long dist) {
 		this.num = num;
 		this.dist = dist;
 	}
@@ -128,7 +128,7 @@ class Node implements Comparable<Node> {
 		if (this.dist == other.dist) {
 			return Integer.compare(this.num, other.num);
 		}
-		return Integer.compare(this.dist, other.dist);
+		return Long.compare(this.dist, other.dist);
 	}
 }
 
