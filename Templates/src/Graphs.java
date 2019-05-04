@@ -11,7 +11,7 @@ public class Graphs {
 	public int N;
 	public int R;
 	public int C;
-	static final int INF = 1 << 30;
+	static final int INF = Integer.MAX_VALUE;
 	
 	// In range of an matrix
 	public boolean inBounds(int r, int c) {
