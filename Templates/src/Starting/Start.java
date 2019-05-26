@@ -1,18 +1,23 @@
 package Starting;
 
+import java.awt.Font;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class Start {
 	public static void main(String[] args) throws IOException {
 		JFrame frame = new JFrame("Input");
 		frame.setAlwaysOnTop(true);
+		Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+		UIManager.put("OptionPane.messageFont", font);
+		UIManager.put("OptionPane.buttonFont", font);
 		String type = JOptionPane.showInputDialog(frame, "Type of problem?");
-		boolean gold = type.equals("Gold");
+		boolean gold = type.toLowerCase().equals("gold");
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String inputOutputFileName = gold ? JOptionPane.showInputDialog(frame, "File name?") : null;
 		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
