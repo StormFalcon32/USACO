@@ -68,14 +68,6 @@ public class Misc {
 		System.out.println();
 	}
 	
-	public int maxBinaryNum(int numDigs) {
-		int max = 0;
-		for (int i = 0; i < numDigs; i++) {
-			max += 1 << i;
-		}
-		return max;
-	}
-	
 	public void binaryCombinatorics(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
