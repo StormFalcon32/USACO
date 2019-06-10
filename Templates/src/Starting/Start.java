@@ -19,7 +19,7 @@ public class Start {
 		String type = JOptionPane.showInputDialog(frame, "Type of problem?");
 		boolean gold = type.toLowerCase().equals("gold");
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
-		String inputOutputFileName = gold ? JOptionPane.showInputDialog(frame, "File name?") : null;
+		String inputOutputFileName = gold ? JOptionPane.showInputDialog(frame, "File name?") : progName;
 		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
 		String varType = JOptionPane.showInputDialog(frame, "Variable type?");
 		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
