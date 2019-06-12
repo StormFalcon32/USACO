@@ -83,7 +83,8 @@ public class Start {
 						+ "	}\r\n" + "}";
 			} else if (cf) {
 				progContent = "import java.util.Scanner;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "	\r\n" + "	public static void main(String[] args) {\r\n"
-						+ "		Scanner in = new Scanner(System.in);\r\n" + "		int N = in.nextInt();\r\n" + "		\r\n" + "		in.close();\r\n" + "	}\r\n" + "}";
+						+ "		Scanner in = new Scanner(System.in);\r\n" + "		" + varType + " " + varName + " = in.next" + (isInt ? "Int()" : "()") + "();\r\n" + "		\r\n"
+						+ "		in.close();\r\n" + "	}\r\n" + "}";
 			}
 			out.write(progContent);
 			out.close();
