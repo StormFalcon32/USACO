@@ -16,8 +16,10 @@ public class Start {
 		Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 		UIManager.put("OptionPane.messageFont", font);
 		UIManager.put("OptionPane.buttonFont", font);
-		String type = JOptionPane.showInputDialog(frame, "Type of problem?");
-		boolean gold = type.toLowerCase().equals("gold");
+		String type = JOptionPane.showInputDialog(frame, "Type of problem?").toLowerCase();
+		boolean gold = type.equals("gold");
+		boolean training = type.equals("training");
+		boolean cf = type.equals("cf");
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
 		String inputOutputFileName = gold ? JOptionPane.showInputDialog(frame, "File name?") : progName;
 		String loc = JOptionPane.showInputDialog(frame, "Home (h), school (s), or other (o)?");
@@ -28,15 +30,17 @@ public class Start {
 		String fileDirectory = "";
 		String homeGold = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Gold\\\\Gold\\\\";
 		String homeTraining = "C:\\\\Users\\\\bench\\\\git\\\\USACO-Training\\\\Training\\\\";
+		String homeCf = "C:\\\\Users\\\\bench\\\\git\\\\CodeForces\\\\CodeForces\\\\";
 		String schoolGold = "H:\\\\git\\\\USACO-Gold\\\\Gold\\\\";
 		String schoolTraining = "H:\\\\git\\\\USACO-Training\\\\Training\\\\";
+		String schoolCf = "H:\\\\git\\\\CodeForces\\\\CodeForces\\\\";
 		if (type != null && progName != null && inputOutputFileName != null && loc != null && varName != null && varType != null) {
 			switch (loc) {
 			case "s":
-				fileDirectory = gold ? schoolGold : schoolTraining;
+				fileDirectory = gold ? schoolGold : training ? schoolTraining : schoolCf;
 				break;
 			case "h":
-				fileDirectory = gold ? homeGold : homeTraining;
+				fileDirectory = gold ? homeGold : training ? homeTraining : homeCf;
 				break;
 			case "o":
 				fileDirectory = JOptionPane.showInputDialog(frame, "Directory?");
@@ -47,13 +51,15 @@ public class Start {
 				break;
 			}
 			File prog = new File(fileDirectory + "src\\" + progName + ".java");
-			File inputFile = new File(fileDirectory + inputOutputFileName + ".in");
-			File outputFile = new File(fileDirectory + inputOutputFileName + ".out");
+			if (!cf) {
+				File inputFile = new File(fileDirectory + inputOutputFileName + ".in");
+				File outputFile = new File(fileDirectory + inputOutputFileName + ".out");
+				inputFile.createNewFile();
+				outputFile.createNewFile();
+			}
 			prog.createNewFile();
-			inputFile.createNewFile();
-			outputFile.createNewFile();
 			FileWriter out = new FileWriter(prog);
-			String progContent;
+			String progContent = "";
 			if (gold) {
 				progContent = "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n" + "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n"
 						+ "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n" + "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "\r\n"
@@ -65,7 +71,7 @@ public class Start {
 						+ (isInt ? "Integer.parseInt(tk.nextToken())" : (isString ? "in.readLine()" : "")) + ";\r\n"
 						+ (isInt ? "		for (int i = 0; i < " + varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" : "") + "		out.close();\r\n" + "		in.close();\r\n"
 						+ "	}\r\n" + "}";
-			} else {
+			} else if (training) {
 				progContent = "/*\r\n" + "ID: benchen1\r\n" + "LANG: JAVA\r\n" + "TASK: " + progName + "\r\n" + "*/\r\n" + "\r\n" + "import java.io.BufferedReader;\r\n"
 						+ "import java.io.BufferedWriter;\r\n" + "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n" + "import java.io.IOException;\r\n"
 						+ "import java.io.PrintWriter;\r\n" + "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "\r\n"
@@ -75,6 +81,9 @@ public class Start {
 						+ (isInt ? "Integer.parseInt(tk.nextToken())" : (isString ? "in.readLine()" : "")) + ";\r\n"
 						+ (isInt ? "		for (int i = 0; i < " + varName + "; i++) {\r\n" + "			\r\n" + "		}\r\n" : "") + "		out.close();\r\n" + "		in.close();\r\n"
 						+ "	}\r\n" + "}";
+			} else if (cf) {
+				progContent = "import java.util.Scanner;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "	\r\n" + "	public static void main(String[] args) {\r\n"
+						+ "		Scanner in = new Scanner(System.in);\r\n" + "		int N = in.nextInt();\r\n" + "		\r\n" + "		in.close();\r\n" + "	}\r\n" + "}";
 			}
 			out.write(progContent);
 			out.close();
