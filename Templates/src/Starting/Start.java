@@ -85,6 +85,14 @@ public class Start {
 				progContent = "import java.util.Scanner;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "	\r\n" + "	public static void main(String[] args) {\r\n"
 						+ "		Scanner in = new Scanner(System.in);\r\n" + "		" + varType + " " + varName + " = in.next" + (isInt ? "Int" : "") + "();\r\n" + "		\r\n"
 						+ "		in.close();\r\n" + "	}\r\n" + "}";
+				
+				progContent = "import java.io.BufferedReader;\r\n" + "import java.io.IOException;\r\n" + "import java.io.InputStreamReader;\r\n" + "import java.io.PrintStream;\r\n"
+						+ "import java.io.PrintWriter;\r\n" + "import java.util.StringTokenizer;\r\n" + "\r\n" + "public class " + progName + " {\r\n" + "	\r\n"
+						+ "	public static void main(String[] args) throws IOException {\r\n" + "		// TODO Auto-generated method stub\r\n"
+						+ "		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));\r\n" + "		PrintWriter out = new PrintWriter(new PrintStream(System.out));\r\n"
+						+ "		StringTokenizer tk = new StringTokenizer(in.readLine());\r\n" + "		" + varType + " " + varName + " = "
+						+ (isInt ? "Integer.parseInt(tk.nextToken())" : (isString ? "in.readLine()" : "")) + ";\r\n" + "		\r\n" + "		in.close();\r\n" + "		out.close();\r\n"
+						+ "	}\r\n" + "}";
 			}
 			out.write(progContent);
 			out.close();
