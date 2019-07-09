@@ -99,8 +99,7 @@ public class Graphs {
 				if (!inSet[v]) {
 					if (distsThroughU < dists[v]) {
 						dists[v] = distsThroughU;
-						Node toAdd = new Node(v, distsThroughU);
-						heap.add(toAdd);
+						heap.add(new Node(v, distsThroughU));
 					}
 				}
 			}
