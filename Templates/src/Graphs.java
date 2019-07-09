@@ -1,8 +1,6 @@
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.ListIterator;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class Graphs {
 	
@@ -56,60 +54,58 @@ public class Graphs {
 	}
 	
 	public long[] dijkstraAdjMat(int[][] adjMat, int root) {
-		long[] dist = new long[N];
-		Arrays.fill(dist, INF);
+		long[] dists = new long[N];
+		Arrays.fill(dists, INF);
 		boolean[] inSet = new boolean[N];
-		dist[root] = 0;
+		dists[root] = 0;
 		
 		for (int k = 0; k < N - 1; k++) {
 			
 			int smallest = -1;
 			long min = Long.MAX_VALUE;
 			for (int i = 0; i < N; i++) {
-				if (!inSet[i] && dist[i] < min) {
+				if (!inSet[i] && dists[i] < min) {
 					smallest = i;
-					min = dist[i];
+					min = dists[i];
 				}
 			}
 			inSet[smallest] = true;
 			
 			for (int v = 0; v < N; v++) {
-				long distThroughU = dist[smallest] + adjMat[smallest][v];
+				long distsThroughU = dists[smallest] + adjMat[smallest][v];
 				if (!inSet[v] && adjMat[smallest][v] != 0) {
-					dist[v] = Math.min(dist[v], distThroughU);
+					dists[v] = Math.min(dists[v], distsThroughU);
 				}
 			}
 		}
-		return dist;
+		return dists;
 	}
 	
 	public long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
-		Queue<Node> heap = new PriorityQueue<Node>();
-		long[] dist = new long[N];
-		Arrays.fill(dist, INF);
+		PriorityQueue<Node> heap = new PriorityQueue<Node>();
+		long[] dists = new long[N];
+		Arrays.fill(dists, INF);
 		boolean[] inSet = new boolean[N];
 		heap.add(new Node(root, 0));
-		dist[root] = 0;
+		dists[root] = 0;
 		
 		while (!heap.isEmpty()) {
 			int u = heap.poll().num;
 			inSet[u] = true;
 			LinkedList<Edge> adj = adjList[u];
-			ListIterator<Edge> iterate = adj.listIterator();
-			while (iterate.hasNext()) {
-				Edge currEdge = iterate.next();
+			for (Edge currEdge : adj) {
 				int v = currEdge.other;
-				long distThroughU = dist[u] + currEdge.weight;
+				long distsThroughU = dists[u] + currEdge.weight;
 				if (!inSet[v]) {
-					if (distThroughU < dist[v]) {
-						dist[v] = distThroughU;
-						Node toAdd = new Node(v, distThroughU);
+					if (distsThroughU < dists[v]) {
+						dists[v] = distsThroughU;
+						Node toAdd = new Node(v, distsThroughU);
 						heap.add(toAdd);
 					}
 				}
 			}
 		}
-		return dist;
+		return dists;
 	}
 }
 
