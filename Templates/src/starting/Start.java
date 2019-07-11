@@ -1,4 +1,4 @@
-package Starting;
+package starting;
 
 import java.awt.Font;
 import java.io.File;
