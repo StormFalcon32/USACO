@@ -9,7 +9,6 @@ public class Graphs {
 	public int N;
 	public int R;
 	public int C;
-	static final long INF = Long.MAX_VALUE;
 	
 	// In range of an matrix
 	public boolean inBounds(int r, int c) {
@@ -55,7 +54,7 @@ public class Graphs {
 	
 	public long[] dijkstraAdjMat(int[][] adjMat, int root) {
 		long[] dists = new long[N];
-		Arrays.fill(dists, INF);
+		Arrays.fill(dists, Long.MAX_VALUE);
 		boolean[] inSet = new boolean[N];
 		dists[root] = 0;
 		
@@ -84,7 +83,7 @@ public class Graphs {
 	public long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
 		PriorityQueue<Node> heap = new PriorityQueue<Node>();
 		long[] dists = new long[N];
-		Arrays.fill(dists, INF);
+		Arrays.fill(dists, Long.MAX_VALUE);
 		boolean[] inSet = new boolean[N];
 		heap.add(new Node(root, 0));
 		dists[root] = 0;
