@@ -7,6 +7,7 @@ public class Graphs {
 	static final int[] dirR = { 0, 0, 1, -1 };
 	static final int[] dirC = { 1, -1, 0, 0 };
 	public int N;
+	public int E;
 	public int R;
 	public int C;
 	
@@ -50,6 +51,24 @@ public class Graphs {
 			}
 		}
 		return parent;
+	}
+	
+	public KEdge[] kruskalEdgeList(KEdge[] edges) {
+		PriorityQueue<KEdge> pq = new PriorityQueue<KEdge>();
+		for (int i = 0; i < E; i++) {
+			pq.add(edges[i]);
+		}
+		KEdge[] mst = new KEdge[E];
+		// DisjointSet ds = new DisjointSet(N);
+		// int index = 0;
+		// while (index < N - 1) {
+		// KEdge curr = pq.poll();
+		// if (!ds.find(curr.source, curr.dest)) {
+		// mst[index] = curr;
+		// ds.union(curr.source, curr.dest);
+		// }
+		// }
+		return mst;
 	}
 	
 	public long[] dijkstraAdjMat(int[][] adjMat, int root) {
@@ -123,6 +142,24 @@ class Node implements Comparable<Node> {
 			return Integer.compare(this.num, other.num);
 		}
 		return Long.compare(this.dist, other.dist);
+	}
+}
+
+class KEdge implements Comparable<KEdge> {
+	int source;
+	int dest;
+	int weight;
+	
+	public KEdge(int s, int d, int w) {
+		source = s;
+		dest = d;
+		weight = w;
+	}
+	
+	@Override
+	public int compareTo(KEdge o) {
+		// TODO Auto-generated method stub
+		return Integer.compare(this.weight, o.weight);
 	}
 }
 
