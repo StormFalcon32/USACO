@@ -3,14 +3,14 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class Graphs {
-	
+
 	static final int[] dirR = { 0, 0, 1, -1 };
 	static final int[] dirC = { 1, -1, 0, 0 };
 	public int N;
 	public int E;
 	public int R;
 	public int C;
-	
+
 	// In range of an matrix
 	public boolean inBounds(int r, int c) {
 		if (r < R && r >= 0 && c < C && c >= 0) {
@@ -18,23 +18,23 @@ public class Graphs {
 		}
 		return false;
 	}
-	
+
 	public int[] primAdjMat(int adjMat[][]) {
 		// Array to store constructed MST
 		int parent[] = new int[N];
-		
+
 		int key[] = new int[N];
 		Arrays.fill(key, Integer.MAX_VALUE);
-		
+
 		boolean inSet[] = new boolean[N];
-		
+
 		key[0] = 0;
 		parent[0] = -1;
-		
+
 		for (int count = 0; count < N - 1; count++) {
 			int min = Integer.MAX_VALUE;
 			int minIndex = -1;
-			
+
 			for (int v = 0; v < N; v++) {
 				if (!inSet[v] && key[v] < min) {
 					min = key[v];
@@ -52,7 +52,7 @@ public class Graphs {
 		}
 		return parent;
 	}
-	
+
 	public KEdge[] kruskalEdgeList(KEdge[] edges) {
 		PriorityQueue<KEdge> pq = new PriorityQueue<KEdge>();
 		for (int i = 0; i < E; i++) {
@@ -70,15 +70,15 @@ public class Graphs {
 		// }
 		return mst;
 	}
-	
+
 	public long[] dijkstraAdjMat(int[][] adjMat, int root) {
 		long[] dists = new long[N];
 		Arrays.fill(dists, Long.MAX_VALUE);
 		boolean[] inSet = new boolean[N];
 		dists[root] = 0;
-		
+
 		for (int k = 0; k < N - 1; k++) {
-			
+
 			int smallest = -1;
 			long min = Long.MAX_VALUE;
 			for (int i = 0; i < N; i++) {
@@ -88,7 +88,7 @@ public class Graphs {
 				}
 			}
 			inSet[smallest] = true;
-			
+
 			for (int v = 0; v < N; v++) {
 				long distsThroughU = dists[smallest] + adjMat[smallest][v];
 				if (!inSet[v] && adjMat[smallest][v] != 0) {
@@ -98,7 +98,7 @@ public class Graphs {
 		}
 		return dists;
 	}
-	
+
 	public long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
 		PriorityQueue<Node> heap = new PriorityQueue<Node>();
 		long[] dists = new long[N];
@@ -106,7 +106,7 @@ public class Graphs {
 		boolean[] inSet = new boolean[N];
 		heap.add(new Node(root, 0));
 		dists[root] = 0;
-		
+
 		while (!heap.isEmpty()) {
 			int u = heap.poll().num;
 			inSet[u] = true;
@@ -129,15 +129,14 @@ public class Graphs {
 class Node implements Comparable<Node> {
 	int num;
 	long dist;
-	
+
 	public Node(int num, long dist) {
 		this.num = num;
 		this.dist = dist;
 	}
-	
+
 	@Override
 	public int compareTo(Node other) {
-		// TODO Auto-generated method stub
 		if (this.dist == other.dist) {
 			return Integer.compare(this.num, other.num);
 		}
@@ -149,16 +148,15 @@ class KEdge implements Comparable<KEdge> {
 	int source;
 	int dest;
 	int weight;
-	
+
 	public KEdge(int s, int d, int w) {
 		source = s;
 		dest = d;
 		weight = w;
 	}
-	
+
 	@Override
 	public int compareTo(KEdge o) {
-		// TODO Auto-generated method stub
 		return Integer.compare(this.weight, o.weight);
 	}
 }
@@ -166,7 +164,7 @@ class KEdge implements Comparable<KEdge> {
 class Edge {
 	int other;
 	int weight;
-	
+
 	public Edge(int o, int w) {
 		other = o;
 		weight = w;
