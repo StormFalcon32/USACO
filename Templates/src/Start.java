@@ -24,9 +24,9 @@ public class Start {
 		boolean isInt = varType.equals("int");
 		boolean isString = varType.equals("String");
 		String fileDirectory = "";
-		String goldDir = "D:\\\\Workspace\\\\USACO-Gold\\\\Gold\\\\";
-		String trainingDir = "D:\\\\Workspace\\\\USACO-Training\\\\Training\\\\";
-		String workspace = "D:\\\\Workspace\\\\";
+		String goldDir = "D:\\\\Java\\\\USACO-Gold\\\\Gold\\\\";
+		String trainingDir = "D:\\\\Java\\\\USACO-Training\\\\Training\\\\";
+		String workspace = "D:\\\\Java\\\\";
 		if (type != null && progName != null && inputOutputFileName != null && varName != null && varType != null) {
 			if (gold) {
 				fileDirectory = goldDir;
