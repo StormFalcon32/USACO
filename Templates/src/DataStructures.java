@@ -85,7 +85,7 @@ public class DataStructures {
 			build(1, 0, arr.length - 1);
 		}
 
-		void build(int node, int start, int end) {
+		public void build(int node, int start, int end) {
 			if (start == end) {
 				// Leaf node will have a single element
 				tree[node] = arr[start];
@@ -100,7 +100,7 @@ public class DataStructures {
 			}
 		}
 
-		void update(int node, int start, int end, int ind, int val) {
+		public void update(int node, int start, int end, int ind, int val) {
 			if (start == end) {
 				// Leaf node
 				arr[ind] += val;
@@ -119,7 +119,7 @@ public class DataStructures {
 			}
 		}
 
-		int query(int node, int start, int end, int l, int r) {
+		public int query(int node, int start, int end, int l, int r) {
 			if (r < start || end < l) {
 				// range represented by a node is completely outside the given range
 				return 0;

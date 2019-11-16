@@ -4,8 +4,8 @@ import java.util.PriorityQueue;
 
 public class Graphs {
 
-	static final int[] dirR = { 0, 0, 1, -1 };
-	static final int[] dirC = { 1, -1, 0, 0 };
+	public final int[] dirR = { 0, 0, 1, -1 };
+	public final int[] dirC = { 1, -1, 0, 0 };
 	public int N;
 	public int E;
 	public int R;
@@ -124,49 +124,49 @@ public class Graphs {
 		}
 		return dists;
 	}
-}
 
-class Node implements Comparable<Node> {
-	int num;
-	long dist;
+	static class Node implements Comparable<Node> {
+		int num;
+		long dist;
 
-	public Node(int num, long dist) {
-		this.num = num;
-		this.dist = dist;
-	}
-
-	@Override
-	public int compareTo(Node other) {
-		if (this.dist == other.dist) {
-			return Integer.compare(this.num, other.num);
+		public Node(int num, long dist) {
+			this.num = num;
+			this.dist = dist;
 		}
-		return Long.compare(this.dist, other.dist);
-	}
-}
 
-class KEdge implements Comparable<KEdge> {
-	int source;
-	int dest;
-	int weight;
-
-	public KEdge(int s, int d, int w) {
-		source = s;
-		dest = d;
-		weight = w;
+		@Override
+		public int compareTo(Node other) {
+			if (this.dist == other.dist) {
+				return Integer.compare(this.num, other.num);
+			}
+			return Long.compare(this.dist, other.dist);
+		}
 	}
 
-	@Override
-	public int compareTo(KEdge o) {
-		return Integer.compare(this.weight, o.weight);
+	static class KEdge implements Comparable<KEdge> {
+		int source;
+		int dest;
+		int weight;
+
+		public KEdge(int s, int d, int w) {
+			source = s;
+			dest = d;
+			weight = w;
+		}
+
+		@Override
+		public int compareTo(KEdge o) {
+			return Integer.compare(this.weight, o.weight);
+		}
 	}
-}
 
-class Edge {
-	int other;
-	int weight;
+	static class Edge {
+		int other;
+		int weight;
 
-	public Edge(int o, int w) {
-		other = o;
-		weight = w;
+		public Edge(int o, int w) {
+			other = o;
+			weight = w;
+		}
 	}
 }

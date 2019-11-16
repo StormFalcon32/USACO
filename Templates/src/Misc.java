@@ -8,12 +8,12 @@ public class Misc {
 
 	// Checking for palindromes and changing bases
 
-	public ArrayList<Integer> changeBase(int num, int base) {
+	static ArrayList<Integer> changeBase(int num, int base) {
 		ArrayList<Integer> newDigits = calcDigits(num, base);
 		return newDigits;
 	}
 
-	public boolean isPalindrome(ArrayList<Integer> digits) {
+	static boolean isPalindrome(ArrayList<Integer> digits) {
 		int numDigits = digits.size();
 		for (int i = 0; i < numDigits / 2; i++) {
 			if (digits.get(i) != digits.get(numDigits - i - 1)) {
@@ -23,7 +23,7 @@ public class Misc {
 		return true;
 	}
 
-	public ArrayList<Integer> calcDigits(int num, int base) {
+	static ArrayList<Integer> calcDigits(int num, int base) {
 		ArrayList<Integer> digits = new ArrayList<Integer>();
 		while (num > 0) {
 			digits.add(num % base);
@@ -32,7 +32,7 @@ public class Misc {
 		return digits;
 	}
 
-	public int calcNumDigits(int num) {
+	static int calcNumDigits(int num) {
 		int ret = 0;
 		while (num > 0) {
 			ret++;
@@ -42,7 +42,7 @@ public class Misc {
 	}
 
 	// Simple primality test
-	public boolean isPrime(int num) {
+	static boolean isPrime(int num) {
 		if (num % 2 == 0) {
 			return false;
 		}
@@ -57,7 +57,7 @@ public class Misc {
 
 	// Binary and bits
 
-	public void binaryToBools(int x, int numDigs) {
+	static void binaryToBools(int x, int numDigs) {
 		for (int i = 0; i < numDigs; i++) {
 			if ((x & (1 << i)) == 1 << i) {
 				System.out.print(1);
@@ -68,7 +68,7 @@ public class Misc {
 		System.out.println();
 	}
 
-	public void binaryCombinatorics(int numDigs) {
+	static void binaryCombinatorics(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
 			max += 1 << i;
@@ -86,7 +86,7 @@ public class Misc {
 		}
 	}
 
-	public void seedGen(int N) {
+	static void seedGen(int N) {
 		long[] seeds = new long[N];
 
 		for (int i = 0; i < N; i++) {
@@ -97,11 +97,25 @@ public class Misc {
 
 	// binary search variants
 
-	public static int upperBound(int[] arr, int value) {
+	static int lowerBound(int[] arr, int value) {
 		int low = 0;
 		int high = arr.length - 1;
 		while (low < high) {
-			final int mid = (low + high) / 2;
+			int mid = (low + high) / 2;
+			if (value <= arr[mid]) {
+				high = mid;
+			} else {
+				low = mid + 1;
+			}
+		}
+		return low;
+	}
+
+	static int upperBound(int[] arr, int value) {
+		int low = 0;
+		int high = arr.length - 1;
+		while (low < high) {
+			int mid = (low + high) / 2;
 			if (value >= arr[mid]) {
 				low = mid + 1;
 			} else {
