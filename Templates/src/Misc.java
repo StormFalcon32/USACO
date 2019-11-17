@@ -68,6 +68,19 @@ public class Misc {
 		System.out.println();
 	}
 
+	static int toBin(boolean[] arr) {
+		int binary = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]) {
+				binary |= (1 << 0);
+			}
+			if (i != arr.length - 1) {
+				binary <<= 1;
+			}
+		}
+		return binary;
+	}
+
 	static void binaryCombinatorics(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
