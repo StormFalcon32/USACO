@@ -57,26 +57,26 @@ public class Misc {
 
 	// Binary and bits
 
-	static void binaryToBools(int x, int numDigs) {
+	static boolean[] toBool(int x, int numDigs) {
+		boolean[] arr = new boolean[numDigs];
 		for (int i = 0; i < numDigs; i++) {
 			if ((x & (1 << i)) == 1 << i) {
-				System.out.print(1);
-			} else {
-				System.out.print(0);
+				arr[i] = true;
 			}
 		}
-		System.out.println();
+		return arr;
 	}
 
 	static int toBin(boolean[] arr) {
 		int binary = 0;
-		for (int i = 0; i < arr.length; i++) {
+		for (int i = arr.length - 1; i >= 0; i--) {
 			if (arr[i]) {
 				binary |= (1 << 0);
 			}
-			if (i != arr.length - 1) {
+			if (i != 0) {
 				binary <<= 1;
 			}
+			System.out.println(Integer.toBinaryString(binary));
 		}
 		return binary;
 	}
