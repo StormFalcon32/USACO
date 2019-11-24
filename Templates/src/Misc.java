@@ -76,7 +76,6 @@ public class Misc {
 			if (i != 0) {
 				binary <<= 1;
 			}
-			System.out.println(Integer.toBinaryString(binary));
 		}
 		return binary;
 	}
