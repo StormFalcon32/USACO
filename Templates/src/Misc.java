@@ -80,6 +80,15 @@ public class Misc {
 		return binary;
 	}
 
+	static int numSet(int bin) {
+		int count = 0;
+		while (bin > 0) {
+			count += bin & 1;
+			bin >>= 1;
+		}
+		return count;
+	}
+
 	static void binaryCombinatorics(int numDigs) {
 		int max = 0;
 		for (int i = 0; i < numDigs; i++) {
