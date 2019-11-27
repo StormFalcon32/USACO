@@ -119,6 +119,7 @@ public class Misc {
 	// binary search variants
 
 	static int lowerBound(int[] arr, int value) {
+		// first element which is >= value
 		int low = 0;
 		int high = arr.length - 1;
 		while (low < high) {
@@ -133,6 +134,7 @@ public class Misc {
 	}
 
 	static int upperBound(int[] arr, int value) {
+		// first element which is > val
 		int low = 0;
 		int high = arr.length - 1;
 		while (low < high) {
