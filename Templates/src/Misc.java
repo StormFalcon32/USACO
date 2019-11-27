@@ -107,13 +107,8 @@ public class Misc {
 		}
 	}
 
-	static void seedGen(int N) {
-		long[] seeds = new long[N];
-
-		for (int i = 0; i < N; i++) {
-			// Fill seeds with random ints
-			seeds[i] = BigInteger.probablePrime(31, new Random()).longValue();
-		}
+	static boolean powerOfTwo(int x) {
+		return (int) (Math.ceil((Math.log(x) / Math.log(2)))) == (int) (Math.floor(((Math.log(x) / Math.log(2)))));
 	}
 
 	// binary search variants
