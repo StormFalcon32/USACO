@@ -4,22 +4,22 @@ import java.util.PriorityQueue;
 
 public class Graphs {
 
-	public final int[] dirR = { 0, 0, 1, -1 };
-	public final int[] dirC = { 1, -1, 0, 0 };
-	public int N;
-	public int E;
-	public int R;
-	public int C;
+	static final int[] dirR = { 0, 0, 1, -1 };
+	static final int[] dirC = { 1, -1, 0, 0 };
+	static int N;
+	static int E;
+	static int R;
+	static int C;
 
 	// In range of an matrix
-	public boolean inBounds(int r, int c) {
+	static boolean inBounds(int r, int c) {
 		if (r < R && r >= 0 && c < C && c >= 0) {
 			return true;
 		}
 		return false;
 	}
 
-	public int[] primAdjMat(int adjMat[][]) {
+	static int[] primAdjMat(int adjMat[][]) {
 		// Array to store constructed MST
 		int parent[] = new int[N];
 
@@ -53,7 +53,7 @@ public class Graphs {
 		return parent;
 	}
 
-	public KEdge[] kruskalEdgeList(KEdge[] edges) {
+	static KEdge[] kruskalEdgeList(KEdge[] edges) {
 		PriorityQueue<KEdge> pq = new PriorityQueue<KEdge>();
 		for (int i = 0; i < E; i++) {
 			pq.add(edges[i]);
@@ -71,7 +71,7 @@ public class Graphs {
 		return mst;
 	}
 
-	public long[] dijkstraAdjMat(int[][] adjMat, int root) {
+	static long[] dijkstraAdjMat(int[][] adjMat, int root) {
 		long[] dists = new long[N];
 		Arrays.fill(dists, Long.MAX_VALUE);
 		boolean[] inSet = new boolean[N];
@@ -99,7 +99,7 @@ public class Graphs {
 		return dists;
 	}
 
-	public long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
+	static long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
 		PriorityQueue<Node> heap = new PriorityQueue<Node>();
 		long[] dists = new long[N];
 		Arrays.fill(dists, Long.MAX_VALUE);
