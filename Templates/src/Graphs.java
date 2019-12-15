@@ -143,6 +143,16 @@ public class Graphs {
 		}
 	}
 
+	static class Edge {
+		int other;
+		int weight;
+
+		public Edge(int o, int w) {
+			other = o;
+			weight = w;
+		}
+	}
+
 	static class KEdge implements Comparable<KEdge> {
 		int source;
 		int dest;
@@ -157,16 +167,6 @@ public class Graphs {
 		@Override
 		public int compareTo(KEdge o) {
 			return Integer.compare(this.weight, o.weight);
-		}
-	}
-
-	static class Edge {
-		int other;
-		int weight;
-
-		public Edge(int o, int w) {
-			other = o;
-			weight = w;
 		}
 	}
 }
