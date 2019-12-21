@@ -17,8 +17,9 @@ public class Start {
 		String type = JOptionPane.showInputDialog(frame, "Type of problem?").toLowerCase();
 		boolean gold = type.equals("gold");
 		boolean training = type.equals("training");
+		boolean contest = type.equals("contest");
 		String progName = JOptionPane.showInputDialog(frame, "Program name?");
-		String inputOutputFileName = gold ? JOptionPane.showInputDialog(frame, "File name?") : progName;
+		String inputOutputFileName = (gold || contest) ? JOptionPane.showInputDialog(frame, "File name?") : progName;
 		String varType = JOptionPane.showInputDialog(frame, "Variable type?");
 		String varName = JOptionPane.showInputDialog(frame, "Variable name?");
 		boolean isInt = varType.equals("int");
@@ -26,12 +27,15 @@ public class Start {
 		String fileDirectory = "";
 		String goldDir = "D:\\\\Java\\\\USACO-Gold\\\\Gold\\\\";
 		String trainingDir = "D:\\\\Java\\\\USACO-Training\\\\Training\\\\";
+		String contestDir = "D:\\\\Java\\\\Contest\\\\";
 		String workspace = "D:\\\\Java\\\\";
 		if (type != null && progName != null && inputOutputFileName != null && varName != null && varType != null) {
 			if (gold) {
 				fileDirectory = goldDir;
-			} else {
+			} else if (training) {
 				fileDirectory = trainingDir;
+			} else if (contest) {
+				fileDirectory = contestDir;
 			}
 			File prog = new File(fileDirectory + "src\\" + progName + ".java");
 			File inputFile = new File(workspace + inputOutputFileName + ".in");
@@ -41,7 +45,7 @@ public class Start {
 			prog.createNewFile();
 			FileWriter out = new FileWriter(prog);
 			String progContent = "";
-			if (gold) {
+			if (gold || contest) {
 				progContent = "import java.io.BufferedReader;\r\n" + "import java.io.BufferedWriter;\r\n"
 						+ "import java.io.FileReader;\r\n" + "import java.io.FileWriter;\r\n"
 						+ "import java.io.IOException;\r\n" + "import java.io.PrintWriter;\r\n"
