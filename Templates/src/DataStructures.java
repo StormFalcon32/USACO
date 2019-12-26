@@ -81,10 +81,14 @@ public class DataStructures {
 		public SegmentTree(int[] arr, int N) {
 			this.arr = arr;
 			this.N = N;
-			int height = (int) (Math.ceil(Math.log(N) / Math.log(2)));
-			int length = 2 * (int) Math.pow(2, height) - 1;
+			int height = (int) (Math.ceil(Math.log(N) / Math.log(2))) + 1;
+			int length = (int) Math.pow(2, height);
 			tree = new int[length];
 			build(1, 0, N - 1);
+		}
+
+		void merge(int node) {
+			tree[node] = tree[2 * node] + tree[2 * node + 1];
 		}
 
 		void build(int node, int start, int end) {
@@ -98,7 +102,7 @@ public class DataStructures {
 				// Recurse on the right child
 				build(2 * node + 1, mid + 1, end);
 				// Internal node will have the sum of both of its children
-				tree[node] = tree[2 * node] + tree[2 * node + 1];
+				merge(node);
 			}
 		}
 
@@ -121,7 +125,7 @@ public class DataStructures {
 					updateUtil(2 * node + 1, mid + 1, end, ind, val);
 				}
 				// Internal node will have the sum of both of its children
-				tree[node] = tree[2 * node] + tree[2 * node + 1];
+				merge(node);
 			}
 		}
 
