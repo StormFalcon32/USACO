@@ -76,7 +76,6 @@ public class DataStructures {
 	static class SegmentTree {
 		int[] tree;
 		int[] arr;
-		int[] size;
 		int N;
 
 		public SegmentTree(int[] arr, int N) {
@@ -85,7 +84,6 @@ public class DataStructures {
 			int height = (int) (Math.ceil(Math.log(N) / Math.log(2)));
 			int length = 2 * (int) Math.pow(2, height) - 1;
 			tree = new int[length];
-			size = new int[length];
 			build(1, 0, N - 1);
 		}
 
