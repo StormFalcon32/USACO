@@ -76,16 +76,20 @@ public class DataStructures {
 	static class SegmentTree {
 		int[] tree;
 		int[] arr;
+		int[] size;
+		int N;
 
-		public SegmentTree(int[] arr) {
+		public SegmentTree(int[] arr, int N) {
 			this.arr = arr;
-			int height = (int) (Math.ceil(Math.log(arr.length) / Math.log(2)));
+			this.N = N;
+			int height = (int) (Math.ceil(Math.log(N) / Math.log(2)));
 			int length = 2 * (int) Math.pow(2, height) - 1;
 			tree = new int[length];
-			build(1, 0, arr.length - 1);
+			size = new int[length];
+			build(1, 0, N - 1);
 		}
 
-		public void build(int node, int start, int end) {
+		void build(int node, int start, int end) {
 			if (start == end) {
 				// Leaf node will have a single element
 				tree[node] = arr[start];
@@ -100,26 +104,34 @@ public class DataStructures {
 			}
 		}
 
-		public void update(int node, int start, int end, int ind, int val) {
+		void update(int ind, int val) {
+			updateUtil(1, 0, N - 1, ind, val);
+		}
+
+		void updateUtil(int node, int start, int end, int ind, int val) {
 			if (start == end) {
 				// Leaf node
-				arr[ind] += val;
-				tree[node] += val;
+				arr[ind] = val;
+				tree[node] = val;
 			} else {
 				int mid = (start + end) / 2;
 				if (start <= ind && ind <= mid) {
 					// If idx is in the left child, recurse on the left child
-					update(2 * node, start, mid, ind, val);
+					updateUtil(2 * node, start, mid, ind, val);
 				} else {
 					// if idx is in the right child, recurse on the right child
-					update(2 * node + 1, mid + 1, end, ind, val);
+					updateUtil(2 * node + 1, mid + 1, end, ind, val);
 				}
 				// Internal node will have the sum of both of its children
 				tree[node] = tree[2 * node] + tree[2 * node + 1];
 			}
 		}
 
-		public int query(int node, int start, int end, int l, int r) {
+		int query(int l, int r) {
+			return queryUtil(1, 0, N - 1, l, r);
+		}
+
+		int queryUtil(int node, int start, int end, int l, int r) {
 			if (r < start || end < l) {
 				// range represented by a node is completely outside the given range
 				return 0;
@@ -131,9 +143,9 @@ public class DataStructures {
 			// range represented by a node is partially inside and partially outside the
 			// given range
 			int mid = (start + end) / 2;
-			int p1 = query(2 * node, start, mid, l, r);
-			int p2 = query(2 * node + 1, mid + 1, end, l, r);
-			return (p1 + p2);
+			int p1 = queryUtil(2 * node, start, mid, l, r);
+			int p2 = queryUtil(2 * node + 1, mid + 1, end, l, r);
+			return p1 + p2;
 		}
 	}
 }
