@@ -71,6 +71,23 @@ public class Graphs {
 		return mst;
 	}
 
+	static class KEdge implements Comparable<KEdge> {
+		int source;
+		int dest;
+		int weight;
+
+		public KEdge(int s, int d, int w) {
+			source = s;
+			dest = d;
+			weight = w;
+		}
+
+		@Override
+		public int compareTo(KEdge o) {
+			return Integer.compare(this.weight, o.weight);
+		}
+	}
+
 	static long[] dijkstraAdjMat(int[][] adjMat, int root) {
 		long[] dists = new long[N];
 		Arrays.fill(dists, Long.MAX_VALUE);
@@ -153,20 +170,66 @@ public class Graphs {
 		}
 	}
 
-	static class KEdge implements Comparable<KEdge> {
-		int source;
-		int dest;
-		int weight;
+	static class LCA {
+		int[] depth;
+		int[][] parent;
+		int level;
+		LinkedList<Integer>[] adjList;
+		int N;
 
-		public KEdge(int s, int d, int w) {
-			source = s;
-			dest = d;
-			weight = w;
+		public LCA(LinkedList<Integer>[] adjList, int N) {
+			this.adjList = adjList;
+			this.N = N;
+			level = (int) (Math.ceil(Math.log(N) / Math.log(2)));
+			depth = new int[N];
+			parent = new int[N][level];
+			dfsLCA(0, -1);
+			precomputeSparseMatrix();
 		}
 
-		@Override
-		public int compareTo(KEdge o) {
-			return Integer.compare(this.weight, o.weight);
+		public void dfsLCA(int curr, int prev) {
+			if (curr != 0) {
+				depth[curr] = depth[prev] + 1;
+				parent[curr][0] = prev;
+			}
+			for (int adj : adjList[curr]) {
+				if (adj != prev) {
+					dfsLCA(adj, curr);
+				}
+			}
+		}
+
+		public void precomputeSparseMatrix() {
+			for (int i = 1; i < level; i++) {
+				for (int node = 0; node < N; node++) {
+					if (parent[node][i - 1] != -1)
+						parent[node][i] = parent[parent[node][i - 1]][i - 1];
+				}
+			}
+		}
+
+		public int lca(int u, int v) {
+			if (depth[v] < depth[u]) {
+				int temp = u;
+				u = v;
+				v = temp;
+			}
+			int diff = depth[v] - depth[u];
+			for (int i = 0; i < level; i++) {
+				if (((diff >> i) & 1) == 1) {
+					v = parent[v][i];
+				}
+			}
+			if (u == v) {
+				return u;
+			}
+			for (int i = level - 1; i >= 0; i--) {
+				if (parent[u][i] != parent[v][i]) {
+					u = parent[u][i];
+					v = parent[v][i];
+				}
+			}
+			return parent[u][0];
 		}
 	}
 }
