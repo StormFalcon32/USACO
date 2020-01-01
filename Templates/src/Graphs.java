@@ -1,25 +1,24 @@
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class Graphs {
 
 	static final int[] dirR = { 0, 0, 1, -1 };
 	static final int[] dirC = { 1, -1, 0, 0 };
-	static int N;
-	static int E;
-	static int R;
-	static int C;
 
 	// In range of an matrix
-	static boolean inBounds(int r, int c) {
+	static boolean inBounds(int r, int c, int R, int C) {
 		if (r < R && r >= 0 && c < C && c >= 0) {
 			return true;
 		}
 		return false;
 	}
 
-	static int[] primAdjMat(int adjMat[][]) {
+	// MST Algs
+	static int[] primAdjMat(int adjMat[][], int N) {
 		// Array to store constructed MST
 		int parent[] = new int[N];
 
@@ -53,7 +52,7 @@ public class Graphs {
 		return parent;
 	}
 
-	static KEdge[] kruskalEdgeList(KEdge[] edges) {
+	static KEdge[] kruskalEdgeList(KEdge[] edges, int E) {
 		PriorityQueue<KEdge> pq = new PriorityQueue<KEdge>();
 		for (int i = 0; i < E; i++) {
 			pq.add(edges[i]);
@@ -88,7 +87,8 @@ public class Graphs {
 		}
 	}
 
-	static long[] dijkstraAdjMat(int[][] adjMat, int root) {
+	// Shortest Path Algs
+	static long[] dijkstraAdjMat(int[][] adjMat, int root, int N) {
 		long[] dists = new long[N];
 		Arrays.fill(dists, Long.MAX_VALUE);
 		boolean[] inSet = new boolean[N];
@@ -116,7 +116,7 @@ public class Graphs {
 		return dists;
 	}
 
-	static long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root) {
+	static long[] dijkstraAdjList(LinkedList<Edge>[] adjList, int root, int N) {
 		PriorityQueue<Node> heap = new PriorityQueue<Node>();
 		long[] dists = new long[N];
 		Arrays.fill(dists, Long.MAX_VALUE);
@@ -167,6 +167,47 @@ public class Graphs {
 		public Edge(int o, int w) {
 			other = o;
 			weight = w;
+		}
+	}
+
+	// Tree Algs
+	static void preorder(LinkedList<Integer>[] adjList, int N) {
+		boolean[] visited = new boolean[N];
+		Stack<Integer> s1 = new Stack<Integer>();
+		s1.push(0);
+		while (!s1.isEmpty()) {
+			int curr = s1.pop();
+			visited[curr] = true;
+			System.out.println(curr);
+			// reverse order to match up with recursive dfs
+			Iterator<Integer> it = adjList[curr].descendingIterator();
+			while (it.hasNext()) {
+				int toTry = it.next();
+				if (!visited[toTry]) {
+					s1.push(toTry);
+				}
+			}
+		}
+	}
+
+	static void postorder(LinkedList<Integer>[] adjList, int N) {
+		Stack<Integer> s1 = new Stack<Integer>();
+		Stack<Integer> s2 = new Stack<Integer>();
+		boolean[] visited = new boolean[N];
+		s1.add(0);
+		while (!s1.isEmpty()) {
+			int curr = s1.pop();
+			visited[curr] = true;
+			s2.push(curr);
+			for (int adj : adjList[curr]) {
+				if (!visited[adj]) {
+					s1.push(adj);
+				}
+			}
+		}
+		while (!s2.isEmpty()) {
+			int curr = s2.pop();
+			System.out.println(curr);
 		}
 	}
 
