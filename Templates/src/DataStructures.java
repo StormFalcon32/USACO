@@ -93,15 +93,11 @@ public class DataStructures {
 
 		void build(int node, int start, int end) {
 			if (start == end) {
-				// Leaf node will have a single element
 				tree[node] = arr[start];
 			} else {
 				int mid = (start + end) / 2;
-				// Recurse on the left child
 				build(2 * node, start, mid);
-				// Recurse on the right child
 				build(2 * node + 1, mid + 1, end);
-				// Internal node will have the sum of both of its children
 				merge(node);
 			}
 		}
@@ -112,19 +108,15 @@ public class DataStructures {
 
 		void updateUtil(int node, int start, int end, int ind, int val) {
 			if (start == end) {
-				// Leaf node
 				arr[ind] = val;
 				tree[node] = val;
 			} else {
 				int mid = (start + end) / 2;
 				if (start <= ind && ind <= mid) {
-					// If idx is in the left child, recurse on the left child
 					updateUtil(2 * node, start, mid, ind, val);
 				} else {
-					// if idx is in the right child, recurse on the right child
 					updateUtil(2 * node + 1, mid + 1, end, ind, val);
 				}
-				// Internal node will have the sum of both of its children
 				merge(node);
 			}
 		}
@@ -135,15 +127,11 @@ public class DataStructures {
 
 		int queryUtil(int node, int start, int end, int l, int r) {
 			if (r < start || end < l) {
-				// range represented by a node is completely outside the given range
 				return 0;
 			}
 			if (l <= start && end <= r) {
-				// range represented by a node is completely inside the given range
 				return tree[node];
 			}
-			// range represented by a node is partially inside and partially outside the
-			// given range
 			int mid = (start + end) / 2;
 			int p1 = queryUtil(2 * node, start, mid, l, r);
 			int p2 = queryUtil(2 * node + 1, mid + 1, end, l, r);
