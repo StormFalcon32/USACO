@@ -122,6 +122,11 @@ public class DataStructures {
 		}
 
 		int query(int l, int r) {
+			if (r < l) {
+				int temp = l;
+				l = r;
+				r = temp;
+			}
 			return queryUtil(1, 0, N - 1, l, r);
 		}
 
